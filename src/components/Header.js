@@ -1,13 +1,16 @@
-import React from "react";
+import { useContext } from "react";
 import Link from "next/link";
+import Context from "@/Utils/context";
 
 const Header = () => {
+  const { usuario } = useContext(Context);
+
   return (
     <nav className="menu">
       <nav id="desplegable">
         <div className="row justify-content-center">
           <div>
-            <Link href="/"> HOME</Link>
+            <Link href="/home"> HOME</Link>
           </div>
         </div>
       </nav>
@@ -32,8 +35,8 @@ const Header = () => {
           <div>
             <a> BISUTERIA</a>
             <ul>
-              <a href="BisuteriaAnillos.html">Anillos</a>
-              <a href="BisuteriaPulseras.html">Pulseras</a>
+              <Link href="bisuteria-anillos">Anillos</Link>
+              <Link href="bisuteria-pulseras">Pulseras</Link>
             </ul>
           </div>
         </div>
@@ -41,10 +44,19 @@ const Header = () => {
       <nav id="desplegable">
         <div className="row justify-content-center">
           <div>
-            <a href="contacto.html"> CONTACTO</a>
+            <Link href="/contacto"> CONTACTO</Link>
           </div>
         </div>
       </nav>
+      {usuario && usuario.rol == "admin" && (
+        <nav id="desplegable">
+          <div className="row justify-content-center">
+            <div>
+              <Link href="/subir"> Subir</Link>
+            </div>
+          </div>
+        </nav>
+      )}
     </nav>
   );
 };
