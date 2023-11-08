@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import Head from "next/head";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Contactanos from "@/components/Contactanos";
+import Context from "@/Utils/context";
+import Picture from "@/components/image";
 
 const Productos = () => {
+  const { imagenes, addCart } = useContext(Context);
+
+  console.log(imagenes)
   return (
     <>
       <Head>
@@ -29,7 +34,17 @@ const Productos = () => {
 
           <div class="col-12">
             <div class="row justify-content-center">
-              <article class="col-6 col-lg-3 py-1">
+              {imagenes.map((img) => {
+                return (
+                  <Picture
+                    key={img.id}
+                    image={img}
+                    title="Here your title"
+                    addCart={addCart}
+                  />
+                );
+              })}
+              {/* <article class="col-6 col-lg-3 py-1">
                 <figure class="producto">
                   <img
                     src="/products/Anillos/Anillo1.jpg"
@@ -374,7 +389,7 @@ const Productos = () => {
                     <p class="overlay-texto">Juego hechos en plata </p>
                   </figcaption>
                 </figure>
-              </article>
+              </article> */}
             </div>
           </div>
         </div>

@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import Head from "next/head";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Contactanos from "@/components/Contactanos";
+import Context from "@/Utils/context";
+import Picture from "@/components/image";
 
-const juegos = () => {
+const Juegos = () => {
+  const { imagenes, addCart } = useContext(Context);
   return (
     <>
       <Head>
@@ -29,315 +32,17 @@ const juegos = () => {
 
           <div class="col-12">
             <div class="row justify-content-center">
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Juegos/imagen 21.jpg"
-                    class="img-fluid"
-                    alt=""
+              {imagenes.map((img) => {
+                if (img.categoria !== "juegos") return;
+                return (
+                  <Picture
+                    key={img.id}
+                    image={img}
+                    title="Here your title"
+                    addCart={addCart}
                   />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Juego de plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Juegos/imagen 22.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Juego de plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Juegos/imagen 23.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Juego de plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Juegos/imagen 24.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Juego de plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Juegos/imagen 25.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Juego de plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Juegos/imagen 26.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Juego de plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Juegos/imagen 27.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Juego de plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Juegos/imagen 28.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Juego de plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Juegos/imagen 29.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Juego de plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Juegos/imagen 30.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Juego de plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Juegos/imagen 2.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Juego de plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Juegos/imagen 3.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Juego de plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Juegos/imagen 4.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Juego de plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Juegos/imagen 5.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Juego de plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Juegos/imagen 5.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Juego de plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Juegos/imagen 5.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Juego de plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Juegos/imagen 5.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Juego de plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Juegos/imagen 5.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Juego de plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Juegos/imagen 5.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Juego de plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Juegos/imagen 5.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Juego de plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Juegos/imagen 5.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Juego de plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Juegos/imagen 5.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Juego de plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Juegos/imagen 5.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Juego de plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Juegos/imagen 5.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Juego de plata </p>
-                  </figcaption>
-                </figure>
-              </article>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -364,4 +69,4 @@ const juegos = () => {
   );
 };
 
-export default juegos;
+export default Juegos;

@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import Head from "next/head";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Contactanos from "@/components/Contactanos";
+import Context from "@/Utils/context";
+import Picture from "@/components/image";
 
-const anillos = () => {
+const Anillos = () => {
+  const { imagenes, addCart } = useContext(Context);
   return (
     <>
       <Head>
@@ -28,154 +31,23 @@ const anillos = () => {
 
           <div class="col-12">
             <div class="row justify-content-center">
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Anillos/Anillo1.jpg"
-                    class="img-fluid"
-                    alt=""
+              {imagenes.map((img) => {
+                if (img.categoria !== "anillos") return;
+                return (
+                  <Picture
+                    key={img.id}
+                    image={img}
+                    title="Here your title"
+                    addCart={addCart}
                   />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Anillo hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Anillos/Anillo 2.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Anillo hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Anillos/anillo3.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Anillo hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Anillos/anillo4.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Anillo hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Anillos/anillo5.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Anillo hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Anillos/anillo6.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Anillo hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Anillos/anillo7.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Anillo hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Anillos/anillo8.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Anillo hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Anillos/anillo9.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Anillo hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Anillos/anillo10.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Anillo hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Anillos/anillo11.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Anillo hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
+                );
+              })}
             </div>
           </div>
         </div>
       </main>
 
-      <div class="container-fluid px-0 galeria">
+      <div class="container-fluid px-b galeria">
         <div class="row justify-content-center mx-0 px-0">
           <div class="col-4 px-0 mx-0">
             <img src="/display/img-01.jpeg" alt="" />
@@ -195,4 +67,4 @@ const anillos = () => {
   );
 };
 
-export default anillos;
+export default Anillos;

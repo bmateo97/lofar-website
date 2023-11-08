@@ -3,7 +3,7 @@ import Link from "next/link";
 import Context from "@/Utils/context";
 
 const Header = () => {
-  const { usuario } = useContext(Context);
+  const { carrito, usuario } = useContext(Context);
 
   return (
     <nav className="menu">
@@ -57,6 +57,14 @@ const Header = () => {
           </div>
         </nav>
       )}
+        <nav id="desplegable">
+          <div className="row justify-content-center">
+            <div className="d-flex align-items-center">
+              <Link href="/carrito">Carrito</Link>
+              <div className="badge rounded-circle badge-danger">{carrito.length}</div>
+            </div>
+          </div>
+        </nav>
     </nav>
   );
 };

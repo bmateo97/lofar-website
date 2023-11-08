@@ -6,12 +6,12 @@ import Contactanos from "@/components/Contactanos";
 import Context from "@/Utils/context";
 import Picture from "@/components/image";
 
-const Pulseras = () => {
-  const { imagenes, addCart } = useContext(Context);
+const Carrito = () => {
+  const { carrito, deleteCarrito } = useContext(Context);
   return (
     <>
       <Head>
-        <title>Bisuteria Pulseras</title>
+        <title>Carrito</title>
       </Head>
       <div class="contenido-header">
         <div class="fondo" id="fondo">
@@ -24,21 +24,21 @@ const Pulseras = () => {
         <div class="row productos">
           <article class="col-12 text-center">
             <h2 class="subtitulo">
-              <span>Lo que ofrecemos</span>
+              <span>Carrito</span>
             </h2>
-            <p class="titulo">Pulseras en Bisuteria</p>
+            <p class="titulo">Productos</p>
           </article>
 
           <div class="col-12">
             <div class="row justify-content-center">
-              {imagenes.map((img) => {
-                if (img.categoria !== "pulseras-b") return;
+              {carrito.map((img) => {
+                if (img.categoria !== "anillos") return;
                 return (
                   <Picture
                     key={img.id}
                     image={img}
                     title="Here your title"
-                    addCart={addCart}
+                    addCart={deleteCarrito}
                   />
                 );
               })}
@@ -47,7 +47,7 @@ const Pulseras = () => {
         </div>
       </main>
 
-      <div class="container-fluid px-0 galeria">
+      <div class="container-fluid px-b galeria">
         <div class="row justify-content-center mx-0 px-0">
           <div class="col-4 px-0 mx-0">
             <img src="/display/img-01.jpeg" alt="" />
@@ -67,4 +67,4 @@ const Pulseras = () => {
   );
 };
 
-export default Pulseras;
+export default Carrito;
