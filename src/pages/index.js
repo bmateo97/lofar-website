@@ -32,6 +32,7 @@ export default function Page() {
       const data = await reponse.json();
       if (data[0].length > 0) {
         setUsuario(data[0][0]);
+        sessionStorage.setItem("user", JSON.stringify(data[0][0]));
         router.push("/home");
       } else {
         setBanner('Usuario no encontrado')

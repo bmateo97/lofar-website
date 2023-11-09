@@ -1,20 +1,36 @@
-import React from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useContext, useState } from "react";
 import Head from "next/head";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Contactanos from "@/components/Contactanos";
 import FileBase64 from 'react-file-base64';
+import Context from "@/Utils/context";
+import { useRouter } from "next/router";
 
 const Subir = () => {
-  const [categoria, setCategoria] = React.useState("");
-  const [blob, setBlob] = React.useState("");
-
+  const router = useRouter();
+  const [categoria, setCategoria] = useState("");
+  const [blob, setBlob] = useState("");
+  const [message, setMessage] = useState("");
+  const { setUsuario } = useContext(Context);
+  
   const handleCategoria = (e) => setCategoria(e.target.value);
   const handleImagen = (b) => {
-    setBlob(b.base64)
+    // if (b.type != "image/png" && b.type != "image/jpeg", b.type != "image/jpg") {
+      // setMessage("Formato no permitido, solo se permite png, jpeg, jpg !");
+      // setTimeout(() => setMessage(""), 3000);
+      // return;
+    // };
+    setBlob(b.base64);
   };
+
   const onSubmit = async () => {
-    console.log(categoria, blob);
+    if (categoria == "") {
+      setMessage("Seleccione una categoria");
+      setTimeout(() => setMessage(""), 3000);
+      return;
+    }
     const response = await fetch("http://localhost:3000/insertar", {
       method: "POST",
       headers: {
@@ -22,19 +38,31 @@ const Subir = () => {
       },
       body: JSON.stringify({ categoria, blob }),
     });
-
+    
     if (response.ok) {
-      const data = await response.json();
-      console.log(data);
+      await response.json();
+      setMessage("Foto subida exitosamente !");
+      setTimeout(() => setMessage(""), 3000);
     } else {
       if (response.status == 413) {
-        console.log("Imagen excede el tamano permitido")
+        setMessage("Imagen excede el tamano permitido");
+        setTimeout(() => setMessage(""), 3000);
       }
-      console.log(response);
-      console.log("Error al subir");
+      setMessage("Error al subir");
+      setTimeout(() => setMessage(""), 3000);
     }
   };
 
+  useEffect(() => {
+    const _usuario = sessionStorage.getItem("user");
+    if (_usuario) {
+      const user = JSON.parse(_usuario);
+      setUsuario(user);
+    } else {
+      router.push("/");
+    }
+  }, []);
+  
   return (
     <>
       <Head>
@@ -48,8 +76,17 @@ const Subir = () => {
 
       <Header />
 
-      <div className="container text-center py-5">
-        <input type="text" placeholder="Categoria" onChange={handleCategoria} />
+      <div className="container text-center pb-5">
+        <select className="p-1 mr-2" onChange={handleCategoria} value={categoria} title="Seleccione una categoria">
+          <option value="">Seleccione una categoria</option>
+          <option value="anillos">Anillos</option>
+          <option value="aretes">Aretes</option>
+          <option value="cadenas">Cadenas</option>
+          <option value="pulseras">Pulseras</option>
+          <option value="juegos">Juegos de plata</option>
+          <option value="anillos-b">Anillos bisuteria</option>
+          <option value="pulseras-b">Pulseras bisuteria</option>
+        </select>
         {/* <input
           type="file"
           className=""
@@ -59,16 +96,13 @@ const Subir = () => {
         <FileBase64
           multiple={ false }
           onDone={ handleImagen } />
-        <br />
         <button
-          className="btn btn-info px-5 mt-3"
+          className="btn btn-info px-5"
           type="button"
           onClick={onSubmit}
-        >
-          Subir
-        </button>
+        >Subir</button>
+        {message ? <div className="my-2 alert alert-info">{message}</div> : null}
       </div>
-
       <Contactanos />
       <Footer />
     </>

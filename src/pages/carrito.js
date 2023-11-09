@@ -1,13 +1,27 @@
-import React, { useContext } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useContext, useEffect } from "react";
 import Head from "next/head";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Contactanos from "@/components/Contactanos";
 import Context from "@/Utils/context";
-import Picture from "@/components/image";
+import Item from "@/components/Item";
+import { useRouter } from "next/router";
 
 const Carrito = () => {
-  const { carrito, deleteCarrito } = useContext(Context);
+  const router = useRouter();
+  const { setUsuario, carrito, deleteCarrito, setCarrito } = useContext(Context);
+
+  useEffect(() => {
+    const _usuario = sessionStorage.getItem("user");
+    if (_usuario) {
+      const user = JSON.parse(_usuario);
+      setUsuario(user);
+    } else {
+      router.push("/");
+    }
+  }, []);
+
   return (
     <>
       <Head>
@@ -20,6 +34,7 @@ const Carrito = () => {
       </div>
 
       <Header />
+      
       <main class="container">
         <div class="row productos">
           <article class="col-12 text-center">
@@ -29,12 +44,10 @@ const Carrito = () => {
             <p class="titulo">Productos</p>
           </article>
 
-          <div class="col-12">
-            <div class="row justify-content-center">
+          <div class="_galeria">
               {carrito.map((img) => {
-                if (img.categoria !== "anillos") return;
                 return (
-                  <Picture
+                  <Item
                     key={img.id}
                     image={img}
                     title="Here your title"
@@ -42,9 +55,14 @@ const Carrito = () => {
                   />
                 );
               })}
-            </div>
           </div>
         </div>
+        <div className="container text-center">
+            <button className="btn btn-info mb-5 px-5" onClick={() => {
+              setCarrito([]);
+              router.push("/comprar");
+            }}>Comprar</button>
+          </div>
       </main>
 
       <div class="container-fluid px-b galeria">

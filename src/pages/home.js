@@ -1,18 +1,26 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Head from "next/head";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useContext, useEffect } from "react";
 import Contactanos from "@/components/Contactanos";
 import { useRouter } from "next/router";
-import { useContext, useEffect } from "react";
 import Context from "@/Utils/context";
+import Link from "next/link";
 
 export default function Home() {
   const router = useRouter();
-  const { usuario } = useContext(Context);
+  const { setUsuario } = useContext(Context);
 
   useEffect(() => {
-    if (!usuario) router.push("/");
-  }, [usuario, router]);
+    const _usuario = sessionStorage.getItem("user");
+    if (_usuario) {
+      const user = JSON.parse(_usuario);
+      setUsuario(user);
+    } else {
+      router.push("/");
+    }
+  }, []);
   return (
     <>
       <Head>
@@ -63,64 +71,47 @@ export default function Home() {
             </p>
           </article>
 
-          <div className="col-12">
-            <div className="row justify-content-center">
-              <article className="col-6 col-lg-3 py-1">
-                <figure className="producto">
-                  <img
-                    src="/products/Anillos/Anillo1.jpg"
-                    className="img-fluid"
-                    alt=""
-                  />
-                  <figcaption className="overlay">
-                    <p className="overlay-texto">Anillo hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
+          <div className="_galeria">
+            <article className="_galeria--item">
+              <figure className="producto">
+                <img src="/products/Anillos/Anillo1.jpg" className="" alt="" />
+                <figcaption className="overlay">
+                  <p className="overlay-texto">Anillo hechos en plata </p>
+                </figcaption>
+              </figure>
+            </article>
 
-              <article className="col-6 col-lg-3 py-1">
-                <figure className="producto">
-                  <img
-                    src="/products/Aretes/Arete1.jpg"
-                    className="img-fluid"
-                    alt=""
-                  />
-                  <figcaption className="overlay">
-                    <p className="overlay-texto">Aretes hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
+            <article className="_galeria--item">
+              <figure className="producto">
+                <img src="/products/Aretes/Arete1.jpg" className="" alt="" />
+                <figcaption className="overlay">
+                  <p className="overlay-texto">Aretes hechos en plata </p>
+                </figcaption>
+              </figure>
+            </article>
 
-              <article className="col-6 col-lg-3 py-1">
-                <figure className="producto">
-                  <img
-                    src="/products/Cadenas/Cadena.jpg"
-                    className="img-fluid"
-                    alt=""
-                  />
-                  <figcaption className="overlay">
-                    <p className="overlay-texto">Cadena hecho en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
+            <article className="_galeria--item">
+              <figure className="producto">
+                <img src="/products/Cadenas/Cadena.jpg" className="" alt="" />
+                <figcaption className="overlay">
+                  <p className="overlay-texto">Cadena hecho en plata </p>
+                </figcaption>
+              </figure>
+            </article>
 
-              <article className="col-6 col-lg-3 py-1">
-                <figure className="producto">
-                  <img
-                    src="/products/Juegos/imagen 25.jpg"
-                    className="img-fluid"
-                    alt=""
-                  />
-                  <figcaption className="overlay">
-                    <p className="overlay-texto">Juego hechos en filigrana </p>
-                  </figcaption>
-                </figure>
-              </article>
-              <a href="Prod.html" button className="d-block btn-productos">
-                {" "}
-                Todos los productos{" "}
-              </a>
-            </div>
+            <article className="_galeria--item">
+              <figure className="producto">
+                <img src="/products/Juegos/imagen 25.jpg" className="" alt="" />
+                <figcaption className="overlay">
+                  <p className="overlay-texto">Juego hechos en filigrana </p>
+                </figcaption>
+              </figure>
+            </article>
+          </div>
+          <div className="container mt-5 text-center">
+            <Link href="/productos" button className="btn-productos">
+              Todos los productos
+            </Link>
           </div>
         </div>
       </main>

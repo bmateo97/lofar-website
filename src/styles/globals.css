@@ -191,11 +191,15 @@ p {
 }
 
 .productos .producto {
-  position: relative;
-  width: 100%;
+  /* position: relative;
+  width: 100%; */
 }
 
 .productos .overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 0%;
   height: 100%;
   position: absolute;
@@ -213,14 +217,14 @@ p {
 }
 
 .productos .producto .overlay-texto {
-  top: 50%;
+  /* top: 50%;
   left: 50%;
-  position: absolute;
+  position: absolute; */
   white-space: nowrap;
   color: var(--white);
   font-size: 18px; /* Tamaño de fuente relativo al ancho de la ventana */
   text-align: center; /* Centrar horizontalmente el texto */
-  transform: translate(-50%, -50%);
+  /* transform: translate(-50%, -50%); */
   overflow: hidden;
   border-top: 1px solid #fff;
   border-bottom: 1px solid #fff;
@@ -241,6 +245,27 @@ p {
   border: 2px solid var(--gold);
   color: var(--gold);
 }
+
+/* ------------------------- */
+/* Galeria */
+/* ------------------------- */
+._galeria {
+  column-count: 4;
+}
+
+._galeria--item {
+  break-inside: avoid;
+}
+
+._galeria--item figure {
+  position: relative;
+}
+
+._galeria--item figure img {
+  width: 100%;
+}
+
+
 
 /* ------------------------- */
 /* Separador */

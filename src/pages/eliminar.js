@@ -5,10 +5,10 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Contactanos from "@/components/Contactanos";
 import Context from "@/Utils/context";
-import Picture from "@/components/image";
+import Editar from "@/components/editar";
 import { useRouter } from "next/router";
 
-const Bisuteria_anillos = () => {
+const Productos = () => {
   const router = useRouter();
   const { setUsuario, imagenes, addCart } = useContext(Context);
 
@@ -25,7 +25,7 @@ const Bisuteria_anillos = () => {
   return (
     <>
       <Head>
-        <title>Bisuteria Anillos</title>
+        <title>Nuestros Productos</title>
       </Head>
       <div class="contenido-header">
         <div class="fondo" id="fondo">
@@ -34,26 +34,19 @@ const Bisuteria_anillos = () => {
       </div>
 
       <Header />
+
       <main class="container">
         <div class="row productos">
           <article class="col-12 text-center">
             <h2 class="subtitulo">
               <span>Lo que ofrecemos</span>
             </h2>
-            <p class="titulo"> Anillos en Bisuteria</p>
+            <p class="titulo">Nuestros Produtos</p>
           </article>
 
           <div class="_galeria">
             {imagenes.map((img) => {
-              if (img.categoria !== "anillos-b") return;
-              return (
-                <Picture
-                  key={img.id}
-                  image={img}
-                  title="Here your title"
-                  addCart={addCart}
-                />
-              );
+              return <Editar key={img.id} image={img} />;
             })}
           </div>
         </div>
@@ -79,4 +72,4 @@ const Bisuteria_anillos = () => {
   );
 };
 
-export default Bisuteria_anillos;
+export default Productos;

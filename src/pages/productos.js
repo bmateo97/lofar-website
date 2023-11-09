@@ -1,15 +1,27 @@
-import React, { useContext } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useContext, useEffect } from "react";
 import Head from "next/head";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Contactanos from "@/components/Contactanos";
 import Context from "@/Utils/context";
 import Picture from "@/components/image";
+import { useRouter } from "next/router";
 
 const Productos = () => {
-  const { imagenes, addCart } = useContext(Context);
+  const router = useRouter();
+  const { setUsuario, imagenes, addCart } = useContext(Context);
 
-  console.log(imagenes)
+  useEffect(() => {
+    const _usuario = sessionStorage.getItem("user");
+    if (_usuario) {
+      const user = JSON.parse(_usuario);
+      setUsuario(user);
+    } else {
+      router.push("/");
+    }
+  }, []);
+
   return (
     <>
       <Head>
@@ -32,365 +44,17 @@ const Productos = () => {
             <p class="titulo">Nuestros Produtos</p>
           </article>
 
-          <div class="col-12">
-            <div class="row justify-content-center">
-              {imagenes.map((img) => {
-                return (
-                  <Picture
-                    key={img.id}
-                    image={img}
-                    title="Here your title"
-                    addCart={addCart}
-                  />
-                );
-              })}
-              {/* <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Anillos/Anillo1.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Anillo hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Anillos/Anillo 2.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Anillo hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Anillos/anillo3.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Anillo hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Anillos/anillo4.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Anillo hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Anillos/anillo5.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Anillo hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Anillos/anillo6.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Anillo hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Anillos/anillo7.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Anillo hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Anillos/anillo8.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Anillo hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Anillos/anillo9.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Anillo hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Anillos/anillo10.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Anillo hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Anillos/anillo11.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Anillo hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Aretes/Arete1.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Arete hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Aretes/Arete2.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Arete hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Aretes/Arete3.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Arete hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Aretes/Arete4.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Arete hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Aretes/Arete5.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Arete hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Cadenas/Cadena.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Cadena hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Cadenas/Cadena2.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Cadena hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Cadenas/Cadena3.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Cadena hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Cadenas/Cadena5.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Cadena hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Cadenas/Cadena6.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Cadena hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Cadenas/Cadena7.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Cadena hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Juegos/imagen 22.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Juego hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Juegos/imagen 23.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Juego hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Juegos/imagen 24.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Juego hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Juegos/imagen 25.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Juego hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article>
-              <article class="col-6 col-lg-3 py-1">
-                <figure class="producto">
-                  <img
-                    src="/products/Juegos/imagen 26.jpg"
-                    class="img-fluid"
-                    alt=""
-                  />
-                  <figcaption class="overlay">
-                    <p class="overlay-texto">Juego hechos en plata </p>
-                  </figcaption>
-                </figure>
-              </article> */}
-            </div>
+          <div class="_galeria">
+            {imagenes.map((img) => {
+              return (
+                <Picture
+                  key={img.id}
+                  image={img}
+                  title="Here your title"
+                  addCart={addCart}
+                />
+              );
+            })}
           </div>
         </div>
       </main>

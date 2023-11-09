@@ -14,25 +14,84 @@ export default function App({ Component, pageProps }) {
     if (response.ok) {
       const imgs = await response.json();
       setImagenes(imgs[0]);
-    } else {
     }
   };
 
   const addCart = (imagen) => {
-    setCarrito([...carrito, imagen]);
-  }
+    const _image = carrito.filter((img) => img.id == imagen.id);
+    if (_image.length > 0) {
+      carrito.forEach((img) => {
+        if (img.id == imagen.id) {
+          img.cantidad++;
+        }
+      });
+    } else {
+      setCarrito([...carrito, { ...imagen, cantidad: 1 }]);
+    }
+  };
 
   const deleteCarrito = (imagen) => {
     setCarrito(carrito.filter((img) => img.id !== imagen.id));
   };
 
+  const onAddItem = (image) => {
+    carrito.forEach((img) => {
+      if (img.id == image.id) {
+        img.cantidad++;
+      }
+    });
+    setCarrito([...carrito]);
+  };
+
+  const onDeleteItem = (image) => {
+    if (image.cantidad == 1) return deleteCarrito(image);
+    carrito.forEach((img) => {
+      if (img.id == image.id) {
+        img.cantidad--;
+      }
+    });
+    setCarrito([...carrito]);
+  };
+
+  const deleteItem = async (image) => {
+    const response = await fetch('http://localhost:3000/eliminar', {
+      method: 'DELETE',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: image.id,
+      })
+    });
+
+    if (response.ok) {
+      getAllImages();
+    }
+  }
+
+  const editStock = () => {};
+
   useEffect(() => {
-    console.log(carrito);
+    const user = sessionStorage.getItem("user");
+    if (user) setUsuario(JSON.parse(user));
     getAllImages();
-  }, [carrito]);
+  }, []);
+
   return (
     <Context.Provider
-      value={{ usuario, setUsuario, imagenes, carrito, addCart, deleteCarrito }}
+      value={{
+        usuario,
+        setUsuario,
+        imagenes,
+        carrito,
+        addCart,
+        deleteCarrito,
+        setCarrito,
+        onAddItem,
+        onDeleteItem,
+        deleteItem,
+        editStock,
+      }}
     >
       <Component {...pageProps} />
     </Context.Provider>

@@ -1,13 +1,27 @@
-import React, { useContext } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useContext, useEffect } from "react";
 import Head from "next/head";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Contactanos from "@/components/Contactanos";
 import Context from "@/Utils/context";
 import Picture from "@/components/image";
+import { useRouter } from "next/router";
 
 const Aretes = () => {
-  const { imagenes, addCart } = useContext(Context);
+  const router = useRouter();
+  const { setUsuario, imagenes, addCart } = useContext(Context);
+
+  useEffect(() => {
+    const _usuario = sessionStorage.getItem("user");
+    if (_usuario) {
+      const user = JSON.parse(_usuario);
+      setUsuario(user);
+    } else {
+      router.push("/");
+    }
+  }, []);
+
   return (
     <>
       <Head>
@@ -29,20 +43,18 @@ const Aretes = () => {
             <p class="titulo"> Aretes</p>
           </article>
 
-          <div class="col-12">
-            <div class="row justify-content-center">
-              {imagenes.map((img) => {
-                if (img.categoria !== "aretes") return;
-                return (
-                  <Picture
-                    key={img.id}
-                    image={img}
-                    title="Here your title"
-                    addCart={addCart}
-                  />
-                );
-              })}
-            </div>
+          <div class="_galeria">
+            {imagenes.map((img) => {
+              if (img.categoria !== "aretes") return;
+              return (
+                <Picture
+                  key={img.id}
+                  image={img}
+                  title="Here your title"
+                  addCart={addCart}
+                />
+              );
+            })}
           </div>
         </div>
       </main>
