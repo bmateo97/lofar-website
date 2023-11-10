@@ -15,6 +15,7 @@
 }
 
 body {
+  position: relative;
   font-size: 20px;
   font-family: "Open Sans", sans-serif;
 }
@@ -49,7 +50,8 @@ p {
 .contenido-header #login {
   width: 300px;
   background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
-  backdrop-filter: blur(3px); /* Blur the background */
+  -webkit-backdrop-filter: blur(3px); /* Blur the background */
+  backdrop-filter: blur(3px);
   border-radius: 5px;
 }
 
@@ -173,6 +175,29 @@ p {
   border-bottom: 1px solid var(--purple-light);
 }
 
+
+.detalle {
+  padding: 20px;
+  width: 40%;
+  height: 100vh;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  right: 0;
+  overflow: auto;
+  background-color: rgba(255, 255, 255, 0.701);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+
+.detalle button {
+  font-size: 2rem;
+}
+
+.detalle p {
+  font-size: 1rem;
+}
+
 /* ------------------------- */
 /* Productos */
 /* ------------------------- */
@@ -217,14 +242,10 @@ p {
 }
 
 .productos .producto .overlay-texto {
-  /* top: 50%;
-  left: 50%;
-  position: absolute; */
   white-space: nowrap;
   color: var(--white);
   font-size: 18px; /* Tamaño de fuente relativo al ancho de la ventana */
   text-align: center; /* Centrar horizontalmente el texto */
-  /* transform: translate(-50%, -50%); */
   overflow: hidden;
   border-top: 1px solid #fff;
   border-bottom: 1px solid #fff;

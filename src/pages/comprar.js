@@ -5,14 +5,14 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Contactanos from "@/components/Contactanos";
 import Context from "@/Utils/context";
-import Picture from "@/components/image";
 import { useRouter } from "next/router";
 
 const Comprar = () => {
   const router = useRouter();
-  const { setUsuario, setCarrito } = useContext(Context);
+  const { setUsuario, getAllImages } = useContext(Context);
 
   useEffect(() => {
+    getAllImages();
     const _usuario = sessionStorage.getItem("user");
     if (_usuario) {
       const user = JSON.parse(_usuario);

@@ -34,7 +34,7 @@ const Carrito = () => {
       </div>
 
       <Header />
-      
+
       <main class="container">
         <div class="row productos">
           <article class="col-12 text-center">
@@ -45,24 +45,44 @@ const Carrito = () => {
           </article>
 
           <div class="_galeria">
-              {carrito.map((img) => {
-                return (
-                  <Item
-                    key={img.id}
-                    image={img}
-                    title="Here your title"
-                    addCart={deleteCarrito}
-                  />
-                );
-              })}
+            {carrito.map((img) => {
+              return (
+                <Item
+                  key={img.id}
+                  image={img}
+                  title="Here your title"
+                  addCart={deleteCarrito}
+                />
+              );
+            })}
           </div>
         </div>
         <div className="container text-center">
-            <button className="btn btn-info mb-5 px-5" onClick={() => {
+          <button
+            className="btn btn-info mb-5 px-5"
+            onClick={() => {
+              carrito.map((img) => {
+                fetch(
+                  "https://lofar-api-uskfbty6la-ue.a.run.app/actualizar",
+                  {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                      id: img.id,
+                      existencias: img.existencias - img.cantidad,
+                    }),
+                  }
+                );
+              });
               setCarrito([]);
               router.push("/comprar");
-            }}>Comprar</button>
-          </div>
+            }}
+          >
+            Comprar
+          </button>
+        </div>
       </main>
 
       <div class="container-fluid px-b galeria">

@@ -8,12 +8,15 @@ export default function App({ Component, pageProps }) {
   const [usuario, setUsuario] = useState(null);
   const [imagenes, setImagenes] = useState([]);
   const [carrito, setCarrito] = useState([]);
+  const [modal, setModal] = useState(false);
+  const [select, setSelect] = useState({});
 
   const getAllImages = async () => {
-    const response = await fetch("http://localhost:3000/images");
+    const response = await fetch("https://lofar-api-uskfbty6la-ue.a.run.app/images");
     if (response.ok) {
       const imgs = await response.json();
       setImagenes(imgs[0]);
+      // setSelect(imgs[0][0])///;
     }
   };
 
@@ -54,7 +57,7 @@ export default function App({ Component, pageProps }) {
   };
 
   const deleteItem = async (image) => {
-    const response = await fetch('http://localhost:3000/eliminar', {
+    const response = await fetch('https://lofar-api-uskfbty6la-ue.a.run.app/eliminar', {
       method: 'DELETE',
       headers: {
         'Content-type': 'application/json',
@@ -75,7 +78,7 @@ export default function App({ Component, pageProps }) {
     const user = sessionStorage.getItem("user");
     if (user) setUsuario(JSON.parse(user));
     getAllImages();
-  }, []);
+  }, [modal]);
 
   return (
     <Context.Provider
@@ -91,6 +94,11 @@ export default function App({ Component, pageProps }) {
         onDeleteItem,
         deleteItem,
         editStock,
+        modal,
+        setModal,
+        select,
+        setSelect,
+        getAllImages,
       }}
     >
       <Component {...pageProps} />

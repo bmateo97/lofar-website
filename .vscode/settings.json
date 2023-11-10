@@ -3,5 +3,19 @@
         "activityBar.background": "#0F2B62",
         "titleBar.activeBackground": "#153C89",
         "titleBar.activeForeground": "#F9FAFE"
-    }
+    },
+    "cSpell.words": [
+        "bisuteria",
+        "carrito",
+        "categoria",
+        "Categoria",
+        "Contactanos",
+        "galeria",
+        "imagenes",
+        "Imagenes",
+        "Lofar",
+        "producto"
+    ],
+    "cSpell.language": "en,es",
+    "editor.codeActionsOnSave": {}
 }

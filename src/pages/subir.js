@@ -11,41 +11,50 @@ import { useRouter } from "next/router";
 const Subir = () => {
   const router = useRouter();
   const [categoria, setCategoria] = useState("");
+  const [existencias, setExistencias] = useState(0);
   const [blob, setBlob] = useState("");
   const [message, setMessage] = useState("");
-  const { setUsuario } = useContext(Context);
+  const { setUsuario, getAllImages } = useContext(Context);
   
+  const handlerExistencias = (e) => setExistencias(e.target.value);
   const handleCategoria = (e) => setCategoria(e.target.value);
   const handleImagen = (b) => {
-    // if (b.type != "image/png" && b.type != "image/jpeg", b.type != "image/jpg") {
-      // setMessage("Formato no permitido, solo se permite png, jpeg, jpg !");
-      // setTimeout(() => setMessage(""), 3000);
-      // return;
-    // };
-    setBlob(b.base64);
+    if (b.type == "image/png" || b.type == "image/jpeg" || b.type == "image/jpg") {
+      setBlob(b.base64);
+    } else {
+      setMessage("Formato no permitido, solo se permite png, jpeg, jpg !");
+      setTimeout(() => setMessage(""), 3000);
+    };
   };
 
   const onSubmit = async () => {
     if (categoria == "") {
-      setMessage("Seleccione una categoria");
+      setMessage("Seleccione una categoría");
       setTimeout(() => setMessage(""), 3000);
       return;
     }
-    const response = await fetch("http://localhost:3000/insertar", {
+
+    if (blob == "") {
+      setMessage("Seleccione una imagen");
+      setTimeout(() => setMessage(""), 3000);
+    }
+
+    const response = await fetch("https://lofar-api-uskfbty6la-ue.a.run.app/insertar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ categoria, blob }),
+      body: JSON.stringify({ categoria, blob, existencias }),
     });
     
     if (response.ok) {
       await response.json();
+      getAllImages();
       setMessage("Foto subida exitosamente !");
       setTimeout(() => setMessage(""), 3000);
     } else {
       if (response.status == 413) {
-        setMessage("Imagen excede el tamano permitido");
+        setMessage("Imagen excede el tamaño permitido");
         setTimeout(() => setMessage(""), 3000);
       }
       setMessage("Error al subir");
@@ -87,6 +96,7 @@ const Subir = () => {
           <option value="anillos-b">Anillos bisuteria</option>
           <option value="pulseras-b">Pulseras bisuteria</option>
         </select>
+        <input className="p-1 mr-2" placeholder="existencias" type="number" value={existencias} onChange={handlerExistencias} />
         {/* <input
           type="file"
           className=""

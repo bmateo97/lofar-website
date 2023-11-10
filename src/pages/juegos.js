@@ -2,6 +2,7 @@
 import React, { useContext, useEffect } from "react";
 import Head from "next/head";
 import Header from "@/components/Header";
+import Modal from "@/components/Modal";
 import Footer from "@/components/Footer";
 import Contactanos from "@/components/Contactanos";
 import Context from "@/Utils/context";
@@ -34,6 +35,7 @@ const Juegos = () => {
       </div>
 
       <Header />
+      <Modal />
 
       <main class="container">
         <div class="row productos">

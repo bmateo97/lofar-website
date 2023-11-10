@@ -2,6 +2,7 @@
 import React, { useContext, useEffect } from "react";
 import Head from "next/head";
 import Header from "@/components/Header";
+import Modal from "@/components/Modal";
 import Footer from "@/components/Footer";
 import Contactanos from "@/components/Contactanos";
 import Context from "@/Utils/context";
@@ -34,6 +35,7 @@ const Productos = () => {
       </div>
 
       <Header />
+      <Modal />
 
       <main class="container">
         <div class="row productos">
@@ -41,7 +43,7 @@ const Productos = () => {
             <h2 class="subtitulo">
               <span>Lo que ofrecemos</span>
             </h2>
-            <p class="titulo">Nuestros Produtos</p>
+            <p class="titulo">Nuestros Productos</p>
           </article>
 
           <div class="_galeria">
