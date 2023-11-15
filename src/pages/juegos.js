@@ -10,18 +10,7 @@ import Picture from "@/components/image";
 import { useRouter } from "next/router";
 
 const Juegos = () => {
-  const router = useRouter();
-  const { setUsuario, imagenes, addCart } = useContext(Context);
-
-  useEffect(() => {
-    const _usuario = sessionStorage.getItem("user");
-    if (_usuario) {
-      const user = JSON.parse(_usuario);
-      setUsuario(user);
-    } else {
-      router.push("/");
-    }
-  }, []);
+  const { imagenes, addCart } = useContext(Context);
 
   return (
     <>

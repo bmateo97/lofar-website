@@ -39,7 +39,7 @@ const Subir = () => {
       setTimeout(() => setMessage(""), 3000);
     }
 
-    const response = await fetch("https://lofar-api-uskfbty6la-ue.a.run.app/insertar", {
+    const response = await fetch("http://localhost:3000/insertar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

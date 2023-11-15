@@ -7,21 +7,9 @@ import Footer from "@/components/Footer";
 import Contactanos from "@/components/Contactanos";
 import Context from "@/Utils/context";
 import Picture from "@/components/image";
-import { useRouter } from "next/router";
 
 const Pulseras = () => {
-  const router = useRouter();
-  const { setUsuario, imagenes, addCart } = useContext(Context);
-
-  useEffect(() => {
-    const _usuario = sessionStorage.getItem("user");
-    if (_usuario) {
-      const user = JSON.parse(_usuario);
-      setUsuario(user);
-    } else {
-      router.push("/");
-    }
-  }, []);
+  const { imagenes, addCart } = useContext(Context);
 
   return (
     <>

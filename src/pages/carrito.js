@@ -10,17 +10,7 @@ import { useRouter } from "next/router";
 
 const Carrito = () => {
   const router = useRouter();
-  const { setUsuario, carrito, deleteCarrito, setCarrito } = useContext(Context);
-
-  useEffect(() => {
-    const _usuario = sessionStorage.getItem("user");
-    if (_usuario) {
-      const user = JSON.parse(_usuario);
-      setUsuario(user);
-    } else {
-      router.push("/");
-    }
-  }, []);
+  const { usuario, carrito, deleteCarrito, setCarrito } = useContext(Context);
 
   return (
     <>
@@ -61,9 +51,10 @@ const Carrito = () => {
           <button
             className="btn btn-info mb-5 px-5"
             onClick={() => {
+              if (!usuario) return router.push("/ingresar");
               carrito.map((img) => {
                 fetch(
-                  "https://lofar-api-uskfbty6la-ue.a.run.app/actualizar",
+                  "http://localhost:3000/actualizar",
                   {
                     method: "POST",
                     headers: {

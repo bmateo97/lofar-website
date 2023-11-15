@@ -18,7 +18,7 @@ const Header = () => {
       <nav id="desplegable">
         <div className="row justify-content-center">
           <div>
-            <Link href="/home"> HOME</Link>
+            <Link href="/">HOME</Link>
           </div>
         </div>
       </nav>
@@ -43,8 +43,8 @@ const Header = () => {
           <div>
             <a>BISUTERIA</a>
             <ul>
-              <Link href="bisuteria-anillos">Anillos</Link>
-              <Link href="bisuteria-pulseras">Pulseras</Link>
+              <Link href="/bisuteria-anillos">Anillos</Link>
+              <Link href="/bisuteria-pulseras">Pulseras</Link>
             </ul>
           </div>
         </div>
@@ -74,6 +74,17 @@ const Header = () => {
           </nav>
         </>
       )}
+
+      {!usuario && (
+        <nav id="desplegable">
+          <div className="row justify-content-center">
+            <div>
+              <Link href="/ingresar">Ingresar</Link>
+            </div>
+          </div>
+        </nav>
+      )}
+
       <nav id="desplegable">
         <div className="d-flex align-items-center">
           <Link href="/carrito">Carrito</Link>

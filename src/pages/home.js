@@ -9,18 +9,7 @@ import Context from "@/Utils/context";
 import Link from "next/link";
 
 export default function Home() {
-  const router = useRouter();
-  const { setUsuario } = useContext(Context);
 
-  useEffect(() => {
-    const _usuario = sessionStorage.getItem("user");
-    if (_usuario) {
-      const user = JSON.parse(_usuario);
-      setUsuario(user);
-    } else {
-      router.push("/");
-    }
-  }, []);
   return (
     <>
       <Head>

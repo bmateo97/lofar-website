@@ -12,7 +12,7 @@ export default function App({ Component, pageProps }) {
   const [select, setSelect] = useState({});
 
   const getAllImages = async () => {
-    const response = await fetch("https://lofar-api-uskfbty6la-ue.a.run.app/images");
+    const response = await fetch("http://localhost:3000/images");
     if (response.ok) {
       const imgs = await response.json();
       setImagenes(imgs[0]);
@@ -57,7 +57,7 @@ export default function App({ Component, pageProps }) {
   };
 
   const deleteItem = async (image) => {
-    const response = await fetch('https://lofar-api-uskfbty6la-ue.a.run.app/eliminar', {
+    const response = await fetch('http://localhost:3000/eliminar', {
       method: 'DELETE',
       headers: {
         'Content-type': 'application/json',
@@ -75,10 +75,8 @@ export default function App({ Component, pageProps }) {
   const editStock = () => {};
 
   useEffect(() => {
-    const user = sessionStorage.getItem("user");
-    if (user) setUsuario(JSON.parse(user));
     getAllImages();
-  }, [modal]);
+  }, []);
 
   return (
     <Context.Provider
