@@ -54,7 +54,7 @@ const Carrito = () => {
               if (!usuario) return router.push("/ingresar");
               carrito.map((img) => {
                 fetch(
-                  "http://localhost:3000/actualizar",
+                  "https://lofar-api-uskfbty6la-ue.a.run.app/actualizar",
                   {
                     method: "POST",
                     headers: {

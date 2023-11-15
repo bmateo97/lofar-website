@@ -18,7 +18,7 @@ export default function Page() {
   };
 
   const onSubmit = async (ev) => {
-    const reponse = await fetch("http://localhost:3000/ingresar", {
+    const reponse = await fetch("https://lofar-api-uskfbty6la-ue.a.run.app/ingresar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

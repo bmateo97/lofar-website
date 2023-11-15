@@ -23,7 +23,7 @@ export default function Page() {
   };
 
   const onSubmit = async (ev) => {
-    const response = await fetch("http://localhost:3000/registrarse", {
+    const response = await fetch("https://lofar-api-uskfbty6la-ue.a.run.app/registrarse", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
