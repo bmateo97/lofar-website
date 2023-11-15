@@ -58,44 +58,6 @@ export default function Home() {
               contigo un pedacito de amor, belleza y elegancia.
             </p>
           </article>
-
-          <div className="_galeria">
-            <article className="_galeria--item">
-              <figure className="producto">
-                <img src="/products/Anillos/Anillo1.jpg" className="" alt="" />
-                <figcaption className="overlay">
-                  <p className="overlay-texto">Anillo hechos en plata </p>
-                </figcaption>
-              </figure>
-            </article>
-
-            <article className="_galeria--item">
-              <figure className="producto">
-                <img src="/products/Aretes/Arete1.jpg" className="" alt="" />
-                <figcaption className="overlay">
-                  <p className="overlay-texto">Aretes hechos en plata </p>
-                </figcaption>
-              </figure>
-            </article>
-
-            <article className="_galeria--item">
-              <figure className="producto">
-                <img src="/products/Cadenas/Cadena.jpg" className="" alt="" />
-                <figcaption className="overlay">
-                  <p className="overlay-texto">Cadena hecho en plata </p>
-                </figcaption>
-              </figure>
-            </article>
-
-            <article className="_galeria--item">
-              <figure className="producto">
-                <img src="/products/Juegos/imagen 25.jpg" className="" alt="" />
-                <figcaption className="overlay">
-                  <p className="overlay-texto">Juego hechos en filigrana </p>
-                </figcaption>
-              </figure>
-            </article>
-          </div>
           <div className="container mt-5 text-center">
             <Link href="/productos" button className="btn-productos">
               Todos los productos
