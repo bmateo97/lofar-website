@@ -51,7 +51,7 @@ export default function Home() {
             <h2 className="subtitulo">
               <span>Lo que ofrecemos</span>
             </h2>
-            <p className="titulo">Nuestros Produtos</p>
+            <p className="titulo">Nuestros Productos</p>
             <p>
               Las joyas son la expresión más brillante del corazón humano, y en
               nuestra página encontrarás la pieza perfecta para llevar siempre
