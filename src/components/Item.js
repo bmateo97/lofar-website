@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import Context from "@/Utils/context";
 
-const Item = ({ image, title, addCart }) => {
-  const { carrito, setCarrito, onAddItem, onDeleteItem } = useContext(Context);
+const Item = ({ image, addCart }) => {
+  const { onAddItem, onDeleteItem } = useContext(Context);
   return (
     <article key={image.id} class="_galeria--item">
       <figure class="producto">
@@ -27,7 +27,6 @@ const Item = ({ image, title, addCart }) => {
               -
             </button>
           </div>
-          <p class="overlay-texto">{title}</p>
         </figcaption>
       </figure>
     </article>

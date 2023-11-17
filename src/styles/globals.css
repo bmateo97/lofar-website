@@ -29,11 +29,19 @@ p {
 /* ------------------------- */
 .contenido-header {
   width: 100%;
-  height: 100vh;
+  height: 60vh;
   background-image: url(/bg-girl.jpeg);
-  background-position: center;
+  background-position: bottom;
   background-size: cover;
+  background-repeat: no-repeat;
   background-attachment: fixed;
+  margin-bottom: 40px;
+}
+
+.contenido-header2 {
+  height: 100vh;
+  margin-bottom: 0px;
+  box-sizing: border-box;
 }
 
 .contenido-header .fondo {
@@ -97,7 +105,6 @@ p {
   justify-content: center;
   font-family: "Noto Serif", serif;
   font-style: italic;
-  margin-bottom: 80px; /*estaba en 60px cambie a 80px*/
 }
 
 .menu a {

@@ -59,7 +59,7 @@ export default function Page() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="contenido-header">
+      <div className="contenido-header contenido-header2">
         <div className="fondo" id="fondo">
           <div className="p-3" id="login">
             <input

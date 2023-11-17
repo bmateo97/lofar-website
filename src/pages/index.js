@@ -2,10 +2,8 @@
 import Head from "next/head";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useContext, useEffect } from "react";
 import Contactanos from "@/components/Contactanos";
-import { useRouter } from "next/router";
-import Context from "@/Utils/context";
+import Contenido from "@/components/Contenido";
 import Link from "next/link";
 
 export default function Home() {
@@ -17,13 +15,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="contenido-header">
-        <div className="fondo" id="fondo">
-          <h1 className="texto">Fabrica de Joyas Lofar</h1>
-        </div>
-      </div>
-
       <Header />
+      <Contenido />
 
       <main className="container">
         <div className="row nosotros justify-content-center">
@@ -59,43 +52,6 @@ export default function Home() {
             </p>
           </article>
 
-          <div className="_galeria">
-            <article className="_galeria--item">
-              <figure className="producto">
-                <img src="/products/Anillos/Anillo1.jpg" className="" alt="" />
-                <figcaption className="overlay">
-                  <p className="overlay-texto">Anillo hechos en plata </p>
-                </figcaption>
-              </figure>
-            </article>
-
-            <article className="_galeria--item">
-              <figure className="producto">
-                <img src="/products/Aretes/Arete1.jpg" className="" alt="" />
-                <figcaption className="overlay">
-                  <p className="overlay-texto">Aretes hechos en plata </p>
-                </figcaption>
-              </figure>
-            </article>
-
-            <article className="_galeria--item">
-              <figure className="producto">
-                <img src="/products/Cadenas/Cadena.jpg" className="" alt="" />
-                <figcaption className="overlay">
-                  <p className="overlay-texto">Cadena hecho en plata </p>
-                </figcaption>
-              </figure>
-            </article>
-
-            <article className="_galeria--item">
-              <figure className="producto">
-                <img src="/products/Juegos/imagen 25.jpg" className="" alt="" />
-                <figcaption className="overlay">
-                  <p className="overlay-texto">Juego hechos en filigrana </p>
-                </figcaption>
-              </figure>
-            </article>
-          </div>
           <div className="container mt-5 text-center">
             <Link href="/productos" button className="btn-productos">
               Todos los productos

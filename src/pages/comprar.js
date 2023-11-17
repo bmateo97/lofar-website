@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Contactanos from "@/components/Contactanos";
 import Context from "@/Utils/context";
+import Contenido from "@/components/Contenido";
 import { useRouter } from "next/router";
 
 const Comprar = () => {
@@ -27,13 +28,9 @@ const Comprar = () => {
       <Head>
         <title>Carrito</title>
       </Head>
-      <div class="contenido-header">
-        <div class="fondo" id="fondo">
-          <h1 class="texto">Fabrica de Joyas Lofar</h1>
-        </div>
-      </div>
 
       <Header />
+      <Contenido />
       <main class="container text-center mb-5">
         <h3>Felicidades por su compra !</h3>
       </main>

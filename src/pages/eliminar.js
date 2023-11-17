@@ -6,11 +6,12 @@ import Footer from "@/components/Footer";
 import Contactanos from "@/components/Contactanos";
 import Context from "@/Utils/context";
 import Editar from "@/components/editar";
+import Contenido from "@/components/Contenido";
 import { useRouter } from "next/router";
 
 const Productos = () => {
   const router = useRouter();
-  const { setUsuario, imagenes, addCart } = useContext(Context);
+  const { setUsuario, imagenes } = useContext(Context);
 
   useEffect(() => {
     const _usuario = sessionStorage.getItem("user");
@@ -27,13 +28,9 @@ const Productos = () => {
       <Head>
         <title>Nuestros Productos</title>
       </Head>
-      <div class="contenido-header">
-        <div class="fondo" id="fondo">
-          <h1 class="texto">Fabrica de Joyas Lofar</h1>
-        </div>
-      </div>
 
       <Header />
+      <Contenido />
 
       <main class="container">
         <div class="row productos">

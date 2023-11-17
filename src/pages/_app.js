@@ -72,7 +72,29 @@ export default function App({ Component, pageProps }) {
     }
   }
 
-  const editStock = () => {};
+  const editStock = async (id, value) => {
+    const response = await fetch('http://localhost:3000/actualizar', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: id,
+        existencias: value,
+      })
+    });
+
+    console.log(response)
+    if (response.ok) {
+      setImagenes(imagenes.map(img => {
+        if (img.id == id) {
+          img.existencias = value;
+        }
+        return img;
+      }));
+    }
+    
+  };
 
   useEffect(() => {
     getAllImages();

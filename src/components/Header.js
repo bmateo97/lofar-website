@@ -18,7 +18,7 @@ const Header = () => {
       <nav id="desplegable">
         <div className="row justify-content-center">
           <div>
-            <Link href="/">HOME</Link>
+            <Link href="/">Inicio</Link>
           </div>
         </div>
       </nav>
@@ -68,7 +68,7 @@ const Header = () => {
           <nav id="desplegable">
             <div className="row justify-content-center">
               <div>
-                <Link href="/eliminar">Eliminar</Link>
+                <Link href="/eliminar">Editar</Link>
               </div>
             </div>
           </nav>

@@ -34,7 +34,7 @@ export default function Page() {
       if (data[0].length > 0) {
         setUsuario(data[0][0]);
         sessionStorage.setItem("user", JSON.stringify(data[0][0]));
-        router.push("/home");
+        router.push("/");
       } else {
         setBanner('Usuario no encontrado')
         setTimeout(() => setBanner(''), 3000);
@@ -50,7 +50,7 @@ export default function Page() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="contenido-header">
+      <div className="contenido-header contenido-header2">
         <div className="fondo" id="fondo">
           <div className="p-3" id="login">
             <h3 className="text-center">Ingresar</h3>
