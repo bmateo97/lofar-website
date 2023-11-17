@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import Contactanos from "@/components/Contactanos";
 import Context from "@/Utils/context";
 import Picture from "@/components/image";
-import { useRouter } from "next/router";
+import Contenido from "@/components/Contenido";
 
 const Juegos = () => {
   const { imagenes, addCart } = useContext(Context);
@@ -17,13 +17,9 @@ const Juegos = () => {
       <Head>
         <title>Juegos</title>
       </Head>
-      <div class="contenido-header">
-        <div class="fondo" id="fondo">
-          <h1 class="texto">Fabrica de Joyas Lofar</h1>
-        </div>
-      </div>
 
       <Header />
+      <Contenido />
       <Modal />
 
       <main class="container">

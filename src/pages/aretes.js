@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import Contactanos from "@/components/Contactanos";
 import Context from "@/Utils/context";
 import Picture from "@/components/image";
+import Contenido from "@/components/Contenido";
 
 const Aretes = () => {
   const { imagenes, addCart } = useContext(Context);
@@ -16,13 +17,9 @@ const Aretes = () => {
       <Head>
         <title>Aretes</title>
       </Head>
-      <div class="contenido-header">
-        <div class="fondo" id="fondo">
-          <h1 class="texto">Fabrica de Joyas Lofar</h1>
-        </div>
-      </div>
 
       <Header />
+      <Contenido />
       <Modal />
       <main class="container">
         <div class="row productos">

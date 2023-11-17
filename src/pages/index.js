@@ -2,10 +2,8 @@
 import Head from "next/head";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useContext, useEffect } from "react";
 import Contactanos from "@/components/Contactanos";
-import { useRouter } from "next/router";
-import Context from "@/Utils/context";
+import Contenido from "@/components/Contenido";
 import Link from "next/link";
 
 export default function Home() {
@@ -17,13 +15,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="contenido-header">
-        <div className="fondo" id="fondo">
-          <h1 className="texto">Fabrica de Joyas Lofar</h1>
-        </div>
-      </div>
-
       <Header />
+      <Contenido />
 
       <main className="container">
         <div className="row nosotros justify-content-center">

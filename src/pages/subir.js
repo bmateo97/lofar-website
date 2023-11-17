@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import Contactanos from "@/components/Contactanos";
 import FileBase64 from 'react-file-base64';
 import Context from "@/Utils/context";
+import Contenido from "@/components/Contenido";
 import { useRouter } from "next/router";
 
 const Subir = () => {
@@ -77,13 +78,8 @@ const Subir = () => {
       <Head>
         <title>Subir</title>
       </Head>
-      <div class="contenido-header">
-        <div class="fondo" id="fondo">
-          <h1 class="texto">Fabrica de Joyas Lofar</h1>
-        </div>
-      </div>
-
       <Header />
+      <Contenido />
 
       <div className="container text-center pb-5">
         <select className="p-1 mr-2" onChange={handleCategoria} value={categoria} title="Seleccione una categoria">

@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import Contactanos from "@/components/Contactanos";
 import Context from "@/Utils/context";
 import Picture from "@/components/image";
+import Contenido from "@/components/Contenido";
 
 const Bisuteria_anillos = () => {
   const { imagenes, addCart } = useContext(Context);
@@ -16,13 +17,8 @@ const Bisuteria_anillos = () => {
       <Head>
         <title>Bisuteria Anillos</title>
       </Head>
-      <div class="contenido-header">
-        <div class="fondo" id="fondo">
-          <h1 class="texto">Fabrica de Joyas Lofar</h1>
-        </div>
-      </div>
-
       <Header />
+      <Contenido />
       <Modal />
       <main class="container">
         <div class="row productos">

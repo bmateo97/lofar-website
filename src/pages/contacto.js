@@ -2,7 +2,7 @@ import React from "react";
 import Head from "next/head";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Contactanos from "@/components/Contactanos";
+import Contenido from "@/components/Contenido";
 
 const contacto = () => {
   return (
@@ -10,13 +10,9 @@ const contacto = () => {
       <Head>
         <title>Contacto</title>
       </Head>
-      <div class="contenido-header">
-        <div class="fondo" id="fondo">
-          <h1 class="texto">Fabrica de Joyas Lofar</h1>
-        </div>
-      </div>
 
       <Header />
+      <Contenido />
 
       <div class="container-fluid">
         <section class="contacto row justify-content-center">

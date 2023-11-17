@@ -1,11 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import Head from "next/head";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Contactanos from "@/components/Contactanos";
 import Context from "@/Utils/context";
 import Item from "@/components/Item";
+import Contenido from "@/components/Contenido";
 import { useRouter } from "next/router";
 
 const Carrito = () => {
@@ -17,13 +18,8 @@ const Carrito = () => {
       <Head>
         <title>Carrito</title>
       </Head>
-      <div class="contenido-header">
-        <div class="fondo" id="fondo">
-          <h1 class="texto">Fabrica de Joyas Lofar</h1>
-        </div>
-      </div>
-
       <Header />
+      <Contenido />
 
       <main class="container">
         <div class="row productos">
