@@ -499,3 +499,163 @@ input[type="submit"] {
   border-radius: 4px;
   cursor: pointer;
 }
+
+
+@media (min-width: 319px) {
+  .menu {
+    flex-wrap: wrap;
+  }
+
+  .menu a {
+    font-size: 0.9rem;
+  }
+
+  #desplegable ul {
+    width: 100% !important;
+    right: 0;
+  }
+
+  .contenido-header {
+    width: 100%;
+  }
+
+  .contenido-header .texto {
+    font-size: 1.2rem;
+  }
+
+  .contenido-header .fondo {
+    width: 100%;
+  }
+
+  ._galeria {
+    column-count: 1;
+  }
+
+  .contacto a {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 374px) {
+  .menu {
+    flex-wrap: wrap;
+  }
+
+  .menu a {
+    font-size: 0.9rem;
+  }
+
+  #desplegable ul {
+    width: 100% !important;
+    right: 0;
+  }
+
+  .contenido-header {
+    width: 100%;
+  }
+
+  .contenido-header .texto {
+    font-size: 1.2rem;
+  }
+
+  .contenido-header .fondo {
+    width: 100%;
+  }
+}
+
+@media (min-width: 424px) {
+  .menu {
+    flex-wrap: wrap;
+  }
+
+  .menu a {
+    font-size: 0.9rem;
+  }
+
+  #desplegable ul {
+    width: 100% !important;
+    right: 0;
+  }
+
+  .contenido-header {
+    width: 100%;
+  }
+
+  .contenido-header .texto {
+    font-size: 1.5rem;
+  }
+
+  .contenido-header .fondo {
+    width: 100%;
+  }
+}
+
+@media (min-width: 767px) {
+  .menu {
+    flex-wrap: wrap;
+  }
+
+  .menu a {
+    font-size: 0.9rem;
+  }
+
+  #desplegable ul {
+    width: 100% !important;
+    right: 0;
+  }
+
+  .contenido-header {
+    width: 100%;
+  }
+
+  .contenido-header .texto {
+    font-size: 2rem;
+  }
+
+  .contenido-header .fondo {
+    width: 100%;
+  }
+
+  ._galeria {
+    column-count: 2;
+  }
+
+  .contacto a {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 1023px) {
+  .menu {
+    flex-wrap: wrap;
+  }
+
+  .menu a {
+    font-size: 0.9rem;
+  }
+
+  #desplegable ul {
+    width: 100% !important;
+    right: 0;
+  }
+
+  .contenido-header {
+    width: 100%;
+  }
+
+  .contenido-header .texto {
+    font-size: 2.5rem;
+  }
+
+  .contenido-header .fondo {
+    width: 100%;
+  }
+
+  ._galeria {
+    column-count: 4;
+  }
+
+  .contacto a {
+    font-size: 0.9rem;
+  }
+}
