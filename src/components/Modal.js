@@ -22,10 +22,7 @@ const Modal = () => {
             <div>
               <div className="text-center mb-5 mt-3">
                 <p className="text-center">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis
-                  quia, voluptatum, quae, voluptatem voluptatibus dolorum
-                  accusantium quibusdam doloribus voluptas cumque officiis
-                  voluptates. Quisquam, voluptas. Quisquam, voluptas. Quisquam,
+                  {select.descripcion}
                 </p>
                 <article key={select.id} class="_galeria--item">
                   <figure class="producto">

@@ -12,12 +12,14 @@ import { useRouter } from "next/router";
 const Subir = () => {
   const router = useRouter();
   const [categoria, setCategoria] = useState("");
+  const [descripcion, setDescripcion] = useState("");
   const [existencias, setExistencias] = useState(0);
   const [blob, setBlob] = useState("");
   const [message, setMessage] = useState("");
   const { setUsuario, getAllImages } = useContext(Context);
   
   const handlerExistencias = (e) => setExistencias(e.target.value);
+  const handlerDescripcion = (e) => setDescripcion(e.target.value);
   const handleCategoria = (e) => setCategoria(e.target.value);
   const handleImagen = (b) => {
     if (b.type == "image/png" || b.type == "image/jpeg" || b.type == "image/jpg") {
@@ -45,7 +47,7 @@ const Subir = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ categoria, blob, existencias }),
+      body: JSON.stringify({ categoria, blob, existencias, descripcion }),
     });
     
     if (response.ok) {
@@ -102,6 +104,7 @@ const Subir = () => {
         <FileBase64
           multiple={ false }
           onDone={ handleImagen } />
+          <textarea className="" placeholder="Descripción (500)" maxLength="500" onChange={handlerDescripcion} ></textarea>
         <button
           className="btn btn-info px-5"
           type="button"
