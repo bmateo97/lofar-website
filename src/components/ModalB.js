@@ -9,7 +9,7 @@ const ModalB = () => {
   const handlerDescripcion = (e) => setDescripcion(e.target.value);
 
   const onEditDesc = async () => {
-    const response = await fetch('http://localhost:3000/descripcion', {
+    const response = await fetch('https://lofar-api-uskfbty6la-ue.a.run.app/descripcion', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
