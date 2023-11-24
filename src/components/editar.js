@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
 import Context from "@/Utils/context";
+import Modal from "./Modal";
 
 const Editar = ({ image }) => {
-  const { deleteItem, editStock } = useContext(Context);
+  const { deleteItem, editStock, setModal, setSelect } = useContext(Context);
 
   return (
     <article key={image.id} class="_galeria--item">
@@ -10,7 +11,10 @@ const Editar = ({ image }) => {
         <img src={image.blob} class="" alt="" />
 
         <figcaption class="overlay">
-          <button className="btn btn-info mb-2" onClick={() => deleteItem(image)}>
+          <button
+            className="btn btn-info mb-2"
+            onClick={() => deleteItem(image)}
+          >
             Eliminar
           </button>
           <div className="d-flex mb-3 align-items-center">
@@ -28,6 +32,15 @@ const Editar = ({ image }) => {
               -
             </button>
           </div>
+          <button
+            className="btn btn-info"
+            onClick={() => {
+              setSelect(image);
+              setModal(true);
+            }}
+          >
+            Descripción
+          </button>
         </figcaption>
       </figure>
     </article>

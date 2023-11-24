@@ -119,6 +119,7 @@ export default function App({ Component, pageProps }) {
         select,
         setSelect,
         getAllImages,
+        setImagenes, 
       }}
     >
       <Component {...pageProps} />

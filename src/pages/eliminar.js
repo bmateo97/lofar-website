@@ -8,6 +8,7 @@ import Context from "@/Utils/context";
 import Editar from "@/components/editar";
 import Contenido from "@/components/Contenido";
 import { useRouter } from "next/router";
+import ModalB from "@/components/ModalB";
 
 const Productos = () => {
   const router = useRouter();
@@ -31,6 +32,7 @@ const Productos = () => {
 
       <Header />
       <Contenido />
+      <ModalB />
 
       <main class="container">
         <div class="row productos">
