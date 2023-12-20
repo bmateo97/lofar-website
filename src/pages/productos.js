@@ -1,5 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import Head from "next/head";
 import Header from "@/components/Header";
 import Modal from "@/components/Modal";
@@ -8,10 +9,16 @@ import Contactanos from "@/components/Contactanos";
 import Context from "@/Utils/context";
 import Picture from "@/components/image";
 import Contenido from "@/components/Contenido";
+import { DiscussionEmbed } from "disqus-react";
 
 const Productos = () => {
   const { imagenes, addCart } = useContext(Context);
- 
+  const [gender, setGender] = useState("todo");
+  const list = ["pulseras-b", "anillos-b", "cadenas"];
+
+  const onChangeGender = (ev) => {
+    setGender(ev.target.name);
+  };
 
   return (
     <>
@@ -32,16 +39,68 @@ const Productos = () => {
             <p class="titulo">Nuestros Productos</p>
           </article>
 
+          <div className="container text-center">
+            <button
+              className={gender == "todo" ? "buttonA" : "buttonB"}
+              name="todo"
+              onClick={onChangeGender}
+            >
+              Todo
+            </button>
+            <button
+              className={gender == "hombre" ? "buttonA" : "buttonB"}
+              name="hombre"
+              onClick={onChangeGender}
+            >
+              Hombre
+            </button>
+            <button
+              className={gender == "mujer" ? "buttonA" : "buttonB"}
+              name="mujer"
+              onClick={onChangeGender}
+            >
+              Mujer
+            </button>
+          </div>
+
           <div class="_galeria">
             {imagenes.map((img) => {
-              return (
-                <Picture
-                  key={img.id}
-                  image={img}
-                  title="Here your title"
-                  addCart={addCart}
-                />
-              );
+              if (gender == "todo") {
+                return (
+                  <Picture
+                    key={img.id}
+                    image={img}
+                    title="Lofar Joyas"
+                    addCart={addCart}
+                  />
+                );
+              } else {
+                if (gender == "hombre") {
+                  if (list.includes(img.categoria)) {
+                    return (
+                      <Picture
+                        key={img.id}
+                        image={img}
+                        title="Lofar Joyas"
+                        addCart={addCart}
+                      />
+                    );
+                  }
+                }
+
+                if (gender == "mujer") {
+                  if (!list.includes(img.categoria)) {
+                    return (
+                      <Picture
+                        key={img.id}
+                        image={img}
+                        title="Lofar Joyas"
+                        addCart={addCart}
+                      />
+                    );
+                  }
+                }
+              }
             })}
           </div>
         </div>
@@ -62,6 +121,16 @@ const Productos = () => {
       </div>
 
       <Contactanos />
+      <div className="container">
+        <DiscussionEmbed
+          shortname="lofar" // Replace with your Disqus shortname
+          config={{
+            url: "https://lofar-uskfbty6la-ue.a.run.app", // Pass the URL of the page
+            identifier: "lofar-001", // Pass a unique identifier for the page
+            title: "Lofar", // Replace with your page title
+          }}
+        />
+      </div>
       <Footer />
     </>
   );

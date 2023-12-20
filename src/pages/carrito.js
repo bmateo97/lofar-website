@@ -8,6 +8,7 @@ import Context from "@/Utils/context";
 import Item from "@/components/Item";
 import Contenido from "@/components/Contenido";
 import { useRouter } from "next/router";
+import { DiscussionEmbed } from "disqus-react";
 
 const Carrito = () => {
   const router = useRouter();
@@ -87,6 +88,16 @@ const Carrito = () => {
       </div>
 
       <Contactanos />
+      <div className="container">
+        <DiscussionEmbed
+          shortname="lofar" // Replace with your Disqus shortname
+          config={{
+            url: "https://lofar-uskfbty6la-ue.a.run.app", // Pass the URL of the page
+            identifier: "lofar-001", // Pass a unique identifier for the page
+            title: "Lofar", // Replace with your page title
+          }}
+        />
+      </div>
       <Footer />
     </>
   );

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/exhaustive-deps */
 import Head from "next/head";
 import Header from "@/components/Header";
@@ -5,6 +6,7 @@ import Footer from "@/components/Footer";
 import Contactanos from "@/components/Contactanos";
 import Contenido from "@/components/Contenido";
 import Link from "next/link";
+import { DiscussionEmbed } from "disqus-react";
 
 export default function Home() {
   return (
@@ -51,7 +53,56 @@ export default function Home() {
               contigo un pedacito de amor, belleza y elegancia.
             </p>
           </article>
-          <div className="container mt-5 text-center">
+          <div className="container d-flex mt-5">
+            <article class="_galeria--item mx-3">
+              <figure class="producto">
+                <img src="/products/Anillos/Anillo1.jpg" class="" alt="" />
+                <figcaption class="overlay">
+                  <p class="overlay-texto">Anillo hechos en plata </p>
+                </figcaption>
+              </figure>
+            </article>
+
+            <article class="_galeria--item mx-3">
+              <figure class="producto">
+                <img
+                  src="/products/Aretes/Arete1.jpg"
+                  class="img-fluid"
+                  alt=""
+                />
+                <figcaption class="overlay">
+                  <p class="overlay-texto">Aretes hechos en plata </p>
+                </figcaption>
+              </figure>
+            </article>
+
+            <article class="_galeria--item mx-3">
+              <figure class="producto">
+                <img
+                  src="/products/Cadenas/Cadena.jpg"
+                  class="img-fluid"
+                  alt=""
+                />
+                <figcaption class="overlay">
+                  <p class="overlay-texto">Cadena hecho en plata </p>
+                </figcaption>
+              </figure>
+            </article>
+
+            <article class="_galeria--item mx-3">
+              <figure class="producto">
+                <img
+                  src="/products/Juegos/imagen 25.jpg"
+                  class="img-fluid"
+                  alt=""
+                />
+                <figcaption class="overlay">
+                  <p class="overlay-texto">Juego hechos en filigrana </p>
+                </figcaption>
+              </figure>
+            </article>
+          </div>
+          <div className="container d-flex justify-content-center">
             <Link href="/productos" button className="btn-productos">
               Todos los productos
             </Link>
@@ -118,6 +169,16 @@ export default function Home() {
       </div>
 
       <Contactanos />
+      <div className="container">
+        <DiscussionEmbed
+          shortname="lofar" // Replace with your Disqus shortname
+          config={{
+            url: "https://lofar-uskfbty6la-ue.a.run.app", // Pass the URL of the page
+            identifier: "lofar-001", // Pass a unique identifier for the page
+            title: "Lofar", // Replace with your page title
+          }}
+        />
+      </div>
       <Footer />
     </>
   );

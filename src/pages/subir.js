@@ -4,30 +4,37 @@ import Head from "next/head";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Contactanos from "@/components/Contactanos";
-import FileBase64 from 'react-file-base64';
+import FileBase64 from "react-file-base64";
 import Context from "@/Utils/context";
 import Contenido from "@/components/Contenido";
 import { useRouter } from "next/router";
+import { DiscussionEmbed } from "disqus-react";
 
 const Subir = () => {
   const router = useRouter();
   const [categoria, setCategoria] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [existencias, setExistencias] = useState(0);
+  const [precio, setprecio] = useState(0);
   const [blob, setBlob] = useState("");
   const [message, setMessage] = useState("");
   const { setUsuario, getAllImages } = useContext(Context);
-  
+
   const handlerExistencias = (e) => setExistencias(e.target.value);
+  const handlerPrecio = (e) => setprecio(e.target.value);
   const handlerDescripcion = (e) => setDescripcion(e.target.value);
   const handleCategoria = (e) => setCategoria(e.target.value);
   const handleImagen = (b) => {
-    if (b.type == "image/png" || b.type == "image/jpeg" || b.type == "image/jpg") {
+    if (
+      b.type == "image/png" ||
+      b.type == "image/jpeg" ||
+      b.type == "image/jpg"
+    ) {
       setBlob(b.base64);
     } else {
       setMessage("Formato no permitido, solo se permite png, jpeg, jpg !");
       setTimeout(() => setMessage(""), 3000);
-    };
+    }
   };
 
   const onSubmit = async () => {
@@ -42,14 +49,17 @@ const Subir = () => {
       setTimeout(() => setMessage(""), 3000);
     }
 
-    const response = await fetch("https://lofar-api-uskfbty6la-ue.a.run.app/insertar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ categoria, blob, existencias, descripcion }),
-    });
-    
+    const response = await fetch(
+      "https://lofar-api-uskfbty6la-ue.a.run.app/insertar",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ categoria, blob, existencias, descripcion, precio }),
+      }
+    );
+
     if (response.ok) {
       await response.json();
       getAllImages();
@@ -74,7 +84,7 @@ const Subir = () => {
       router.push("/");
     }
   }, []);
-  
+
   return (
     <>
       <Head>
@@ -83,8 +93,15 @@ const Subir = () => {
       <Header />
       <Contenido />
 
-      <div className="container text-center pb-5">
-        <select className="p-1 mr-2" onChange={handleCategoria} value={categoria} title="Seleccione una categoria">
+      <div className="container pb-5">
+       <label>
+        Categoria: <br />
+        <select
+          className="p-1 mr-2"
+          onChange={handleCategoria}
+          value={categoria}
+          title="Seleccione una categoria"
+        >
           <option value="">Seleccione una categoria</option>
           <option value="anillos">Anillos</option>
           <option value="aretes">Aretes</option>
@@ -94,23 +111,52 @@ const Subir = () => {
           <option value="anillos-b">Anillos bisuteria</option>
           <option value="pulseras-b">Pulseras bisuteria</option>
         </select>
-        <input className="p-1 mr-2" placeholder="existencias" type="number" value={existencias} onChange={handlerExistencias} />
-        {/* <input
-          type="file"
+       </label>
+        <div className="mt-2">
+          <label>
+            Existencias: <br />
+            <input
+              className="p-1 mr-2"
+              placeholder="existencias"
+              type="number"
+              min={0}
+              value={existencias}
+              onChange={handlerExistencias}
+            />
+          </label>
+        </div>
+        <div className="mt-2">
+          <label>
+            Precio: <br />
+            <input
+              className="p-1 mr-2"
+              placeholder="Precio"
+              type="number"
+              min={0}
+              value={precio}
+              onChange={handlerPrecio}
+            />
+          </label>
+        </div>
+        <label className="mt-2">
+          Imagen: <br />
+        <FileBase64 multiple={false} onDone={handleImagen} />
+        </label>
+        <label className="mt-2">
+        Descripción: <br />
+        <textarea
           className=""
-          accept="image/png image/jpeg"
-          onChange={handleImagen}
-        /> */}
-        <FileBase64
-          multiple={ false }
-          onDone={ handleImagen } />
-          <textarea className="" placeholder="Descripción (500)" maxLength="500" onChange={handlerDescripcion} ></textarea>
-        <button
-          className="btn btn-info px-5"
-          type="button"
-          onClick={onSubmit}
-        >Subir</button>
-        {message ? <div className="my-2 alert alert-info">{message}</div> : null}
+          placeholder="Descripción (500)"
+          maxLength="500"
+          onChange={handlerDescripcion}
+        ></textarea>
+        </label>
+        <button className="btn btn-info px-5" type="button" onClick={onSubmit}>
+          Subir
+        </button>
+        {message ? (
+          <div className="my-2 alert alert-info">{message}</div>
+        ) : null}
       </div>
       <Contactanos />
       <Footer />

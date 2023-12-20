@@ -534,6 +534,20 @@ input[type="submit"] {
   .contacto a {
     font-size: 0.9rem;
   }
+
+  .titulo {
+    width: 100% !important;
+    font-size: 2rem !important;
+  }
+
+  .recuadro {
+    width: 100% !important;
+  }
+
+  .detalle {
+    width: 70% !important;
+    height: 100% !important;
+  }
 }
 
 @media (min-width: 374px) {
@@ -560,6 +574,20 @@ input[type="submit"] {
 
   .contenido-header .fondo {
     width: 100%;
+  }
+
+  .titulo {
+    width: 100% !important;
+    font-size: 2rem !important;
+  }
+
+  .recuadro {
+    width: 100% !important;
+  }
+
+  .detalle {
+    width: 70% !important;
+    height: 100% !important;
   }
 }
 
@@ -588,6 +616,20 @@ input[type="submit"] {
   .contenido-header .fondo {
     width: 100%;
   }
+
+  .titulo {
+    width: 100% !important;
+    font-size: 2rem !important;
+  }
+
+  .recuadro {
+    width: 100% !important;
+  }
+
+  .detalle {
+    width: 70% !important;
+    height: 100% !important;
+  } 
 }
 
 @media (min-width: 767px) {
@@ -622,6 +664,21 @@ input[type="submit"] {
 
   .contacto a {
     font-size: 0.9rem;
+  }
+
+  .titulo {
+    width: 100% !important;
+    font-size: 2.5rem !important;
+  }
+
+  .recuadro {
+    width: 50% !important;
+    margin-bottom: 20px;
+  }
+
+  .detalle {
+    width: 40% !important;
+    height: 100% !important;
   }
 }
 
@@ -658,4 +715,18 @@ input[type="submit"] {
   .contacto a {
     font-size: 0.9rem;
   }
+}
+
+.buttonA {
+  margin-bottom: 1.5rem;
+  padding: 2px 50px;
+  color: white;
+  background-color: black;
+  border-collapse: collapse;
+}
+
+.buttonB {
+  margin-bottom: 1rem;
+  padding: 2px 50px;
+  border-collapse: collapse;
 }

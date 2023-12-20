@@ -1,36 +1,52 @@
-import React from "react";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import Context from "@/Utils/context";
 
 const ModalB = () => {
-  const { modal, setModal, select, setImagenes, imagenes } = useContext(Context);
-  const [descripcion, setDescripcion] = useState(select.descripcion);
+  const { modal, setModal, setSelect, select, setImagenes, imagenes } = useContext(Context);
 
-  const handlerDescripcion = (e) => setDescripcion(e.target.value);
+  const handlerDescripcion = (e) => {
+    setSelect({
+      ...select,
+      descripcion: e.target.value,
+    });
+  };
+
+  const handlerPrecio = (e) => {
+    setSelect({
+      ...select,
+      precio: e.target.value,
+    });
+  };
 
   const onEditDesc = async () => {
-    const response = await fetch('https://lofar-api-uskfbty6la-ue.a.run.app/descripcion', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        id: select.id,
-        descripcion: descripcion,
-      })
-    });
+    const response = await fetch(
+      "https://lofar-api-uskfbty6la-ue.a.run.app/descripcion",
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          id: select.id,
+          descripcion: select.descripcion,
+          precio: select.precio,
+        }),
+      }
+    );
 
-    
     if (response.ok) {
-      setImagenes(imagenes.map(img => {
-        if (img.id == select.id) {
-          img.descripcion = descripcion;
-        }
-        return img;
-      }));
-      setModal(false)
+      setImagenes(
+        imagenes.map((img) => {
+          if (img.id == select.id) {
+            img.descripcion = select.descripcion;
+            img.precio = select.precio;
+          }
+          return img;
+        })
+      );
+      setModal(false);
     }
-  }
+  };
 
   return (
     <>
@@ -46,8 +62,20 @@ const ModalB = () => {
               </button>
             </div>
             <div>
-              <div className="text-center mb-5 mt-3">
-                <textarea className="text-center" onChange={handlerDescripcion} value={descripcion}></textarea>
+              <div className=" mb-5 mt-3">
+                <label>
+                  Descripción:
+                  <textarea
+                    className="text-center"
+                    onChange={handlerDescripcion}
+                    value={select.descripcion}
+                  ></textarea>
+                </label>
+                <label>
+                  Precio: <br />
+                  <input type="number" min={0} value={select.precio} onChange={handlerPrecio} />
+                </label>
+                <br />
                 <button className="btn btn-info" onClick={onEditDesc}>Guardar</button>
               </div>
             </div>

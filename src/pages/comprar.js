@@ -7,6 +7,7 @@ import Contactanos from "@/components/Contactanos";
 import Context from "@/Utils/context";
 import Contenido from "@/components/Contenido";
 import { useRouter } from "next/router";
+import { DiscussionEmbed } from "disqus-react";
 
 const Comprar = () => {
   const router = useRouter();
@@ -50,6 +51,16 @@ const Comprar = () => {
       </div>
 
       <Contactanos />
+      <div className="container">
+        <DiscussionEmbed
+          shortname="lofar" // Replace with your Disqus shortname
+          config={{
+            url: "https://lofar-uskfbty6la-ue.a.run.app", // Pass the URL of the page
+            identifier: "lofar-001", // Pass a unique identifier for the page
+            title: "Lofar", // Replace with your page title
+          }}
+        />
+      </div>
       <Footer />
     </>
   );

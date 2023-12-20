@@ -1,5 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import Head from "next/head";
 import Header from "@/components/Header";
 import Modal from "@/components/Modal";
@@ -8,6 +9,7 @@ import Contactanos from "@/components/Contactanos";
 import Context from "@/Utils/context";
 import Picture from "@/components/image";
 import Contenido from "@/components/Contenido";
+import { DiscussionEmbed } from "disqus-react";
 
 const Anillos = () => {
   const { imagenes, addCart } = useContext(Context);
@@ -59,6 +61,16 @@ const Anillos = () => {
       </div>
 
       <Contactanos />
+      <div className="container">
+        <DiscussionEmbed
+          shortname="lofar" // Replace with your Disqus shortname
+          config={{
+            url: "https://lofar-uskfbty6la-ue.a.run.app", // Pass the URL of the page
+            identifier: "lofar-001", // Pass a unique identifier for the page
+            title: "Lofar", // Replace with your page title
+          }}
+        />
+      </div>
       <Footer />
     </>
   );

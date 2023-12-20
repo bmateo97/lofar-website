@@ -3,6 +3,7 @@ import Head from "next/head";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Contenido from "@/components/Contenido";
+import { DiscussionEmbed } from "disqus-react";
 
 const contacto = () => {
   return (
@@ -76,7 +77,16 @@ const contacto = () => {
           </div>
         </section>
       </div>
-
+      <div className="container">
+        <DiscussionEmbed
+          shortname="lofar" // Replace with your Disqus shortname
+          config={{
+            url: "https://lofar-uskfbty6la-ue.a.run.app", // Pass the URL of the page
+            identifier: "lofar-001", // Pass a unique identifier for the page
+            title: "Lofar", // Replace with your page title
+          }}
+        />
+      </div>
       <Footer />
     </>
   );
