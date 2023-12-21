@@ -7,16 +7,26 @@ import { useEffect, useState } from "react";
 export default function App({ Component, pageProps }) {
   const [usuario, setUsuario] = useState(null);
   const [imagenes, setImagenes] = useState([]);
+  const [panel, setPanel] = useState({});
   const [carrito, setCarrito] = useState([]);
   const [modal, setModal] = useState(false);
   const [select, setSelect] = useState({});
+  const [precio, setPrecio] = useState(100);
+  const [genero, setGenero] = useState("todo");
 
   const getAllImages = async () => {
     const response = await fetch("https://lofar-api-uskfbty6la-ue.a.run.app/images");
     if (response.ok) {
       const imgs = await response.json();
       setImagenes(imgs[0]);
-      // setSelect(imgs[0][0])///;
+    }
+  };
+
+  const getPanel = async () => {
+    const response = await fetch("https://lofar-api-uskfbty6la-ue.a.run.app/getpanel");
+    if (response.ok) {
+      const panel = await response.json();
+      setPanel(panel[0][0]);
     }
   };
 
@@ -84,7 +94,6 @@ export default function App({ Component, pageProps }) {
       })
     });
 
-    console.log(response)
     if (response.ok) {
       setImagenes(imagenes.map(img => {
         if (img.id == id) {
@@ -93,11 +102,19 @@ export default function App({ Component, pageProps }) {
         return img;
       }));
     }
-    
   };
+
+  const onEditPrecio = (ev) => {
+    setPrecio(ev.target.value);
+  }
+
+  const onEditGenero = (ev) => {
+    setGenero(ev.target.value);
+  }
 
   useEffect(() => {
     getAllImages();
+    getPanel();
   }, []);
 
   return (
@@ -119,7 +136,12 @@ export default function App({ Component, pageProps }) {
         select,
         setSelect,
         getAllImages,
-        setImagenes, 
+        setImagenes,
+        panel,
+        precio,
+        onEditPrecio,
+        genero,
+        onEditGenero,
       }}
     >
       <Component {...pageProps} />

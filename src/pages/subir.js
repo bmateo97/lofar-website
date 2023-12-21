@@ -14,6 +14,7 @@ const Subir = () => {
   const router = useRouter();
   const [categoria, setCategoria] = useState("");
   const [descripcion, setDescripcion] = useState("");
+  const [genero, setGenero] = useState("");
   const [existencias, setExistencias] = useState(0);
   const [precio, setprecio] = useState(0);
   const [blob, setBlob] = useState("");
@@ -24,6 +25,7 @@ const Subir = () => {
   const handlerPrecio = (e) => setprecio(e.target.value);
   const handlerDescripcion = (e) => setDescripcion(e.target.value);
   const handleCategoria = (e) => setCategoria(e.target.value);
+  const handleGenero = (e) => setGenero(e.target.value);
   const handleImagen = (b) => {
     if (
       b.type == "image/png" ||
@@ -44,6 +46,12 @@ const Subir = () => {
       return;
     }
 
+    if (genero == "") {
+      setMessage("Seleccione una categoría");
+      setTimeout(() => setMessage(""), 3000);
+      return;
+    }
+
     if (blob == "") {
       setMessage("Seleccione una imagen");
       setTimeout(() => setMessage(""), 3000);
@@ -56,7 +64,7 @@ const Subir = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ categoria, blob, existencias, descripcion, precio }),
+        body: JSON.stringify({ categoria, blob, existencias, descripcion, precio, genero }),
       }
     );
 
@@ -110,6 +118,20 @@ const Subir = () => {
           <option value="juegos">Juegos de plata</option>
           <option value="anillos-b">Anillos bisuteria</option>
           <option value="pulseras-b">Pulseras bisuteria</option>
+        </select>
+       </label>
+       <label>
+        Genero: <br />
+        <select
+          className="p-1 mr-2"
+          onChange={handleGenero}
+          value={genero}
+          title="Seleccione una categoria"
+        >
+          <option value="">Seleccione una Genero</option>
+          <option value="hombre">Hombre</option>
+          <option value="mujer">Mujer</option>
+          
         </select>
        </label>
         <div className="mt-2">

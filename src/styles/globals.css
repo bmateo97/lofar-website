@@ -29,22 +29,21 @@ p {
 /* ------------------------- */
 .contenido-header {
   width: 100%;
-  height: 60vh;
-  background-image: url(/bg-girl.jpeg);
+  height: 70vh;
   background-position: bottom;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .contenido-header2 {
-  height: 100vh;
+  height: 93vh;
   margin-bottom: 0px;
   box-sizing: border-box;
 }
 
-.contenido-header .fondo {
+.fondo {
   width: 100%;
   height: 100%;
   display: flex;
@@ -52,32 +51,35 @@ p {
   justify-content: center;
   align-items: center;
   max-width: 100%;
+  position: relative;
   background-image: url(/bg-top.png);
 }
 
-.contenido-header #login {
+#login {
   width: 300px;
   background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
   -webkit-backdrop-filter: blur(3px); /* Blur the background */
   backdrop-filter: blur(3px);
   border-radius: 5px;
+  position: absolute;
+  top: 5%;
 }
 
-.contenido-header #login input {
+#login input {
   background-color: transparent;
   color: black;
   border-color: black;
 }
 
-.contenido-header #login input::placeholder {
+#login input::placeholder {
   color: black;
 }
 
-.contenido-header #login button {
+#login button {
   width: 100%;
 }
 
-.contenido-header .texto {
+.texto {
   width: calc(100vw - 20px);
   font-size: 90px;
   font-weight: 400;
@@ -86,6 +88,20 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  color: black;
+  mix-blend-mode: multiply;
+}
+
+.texto2 {
+  font-size: 90px;
+  font-weight: 400;
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  position: absolute;
   color: black;
   mix-blend-mode: multiply;
 }
@@ -181,7 +197,6 @@ p {
   letter-spacing: 3px;
   border-bottom: 1px solid var(--purple-light);
 }
-
 
 .detalle {
   padding: 20px;
@@ -293,8 +308,6 @@ p {
   width: 100%;
 }
 
-
-
 /* ------------------------- */
 /* Separador */
 /* ------------------------- */
@@ -385,78 +398,53 @@ p {
 }
 
 /*///////////////////////////////////////////////////////////
-body {
-    margin: 0;
-    padding: 0;
-}
-
-#desplegable ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-/* color del fondo del contenedor 
-
-#desplegable div div {
-    background-color: #000000;
-}
-
-
 /* estilo predefinido al contenedor */
 
-#desplegable div a {
+#desplegable a {
   display: block;
   color: #fff;
   text-decoration: none;
   padding: 15px;
-  width: 82.5%;
   text-transform: uppercase;
 }
-
-/* posicion del contenedor en la pagina 
-
-#desplegable div div {
-    position: relative;
-    float: left;
-    margin: 0;
-    padding: 0;
-}
-
-
-/* efecto del contenedor al pasar el mouse por encima 
-
-#desplegable div div:hover {
-    background: #000000;
-}
-
 
 /* Quitarenos la visivilidad con display:none cuando no estemos encima */
 
 #desplegable div ul {
   display: none;
   position: absolute;
+  width: 100%;
   top: 100%;
   left: 100%;
   background: rgb(0, 0, 0);
   padding: 0;
 }
 
-/* Tamaño del contenido. AL estar al 100% el ancho se ajustara al ancho del contenedor 
+#desplegable div ul div a {
+  width: 100%;
+}
 
-#desplegable div ul li {
-    float: none;
-    width: 100%;
-	
+#desplegable div ul div {
+  width: 50%;
 }
 
 
+
+.counter {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  margin-top: -15px;
+  margin-left: -15px;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Visualizaremos al pasar por encima el contenido de la lista o lo que queramos meter dentro. */
 
-#desplegable div div:hover ul {
-  width: 25%;
+#desplegable > div:hover ul {
   left: auto;
-  display: block !important;
+  display: flex !important;
 }
 
 /*ajustar*/
@@ -500,6 +488,19 @@ input[type="submit"] {
   cursor: pointer;
 }
 
+.buttonA {
+  margin-bottom: 1.5rem;
+  padding: 2px 50px;
+  color: white;
+  background-color: black;
+  border-collapse: collapse;
+}
+
+.buttonB {
+  margin-bottom: 1rem;
+  padding: 2px 50px;
+  border-collapse: collapse;
+}
 
 @media (min-width: 319px) {
   .menu {
@@ -511,6 +512,7 @@ input[type="submit"] {
   }
 
   #desplegable ul {
+    display: none!important;
     width: 100% !important;
     right: 0;
   }
@@ -519,11 +521,11 @@ input[type="submit"] {
     width: 100%;
   }
 
-  .contenido-header .texto {
+  .texto {
     font-size: 1.2rem;
   }
 
-  .contenido-header .fondo {
+  .fondo {
     width: 100%;
   }
 
@@ -568,11 +570,11 @@ input[type="submit"] {
     width: 100%;
   }
 
-  .contenido-header .texto {
+  .texto {
     font-size: 1.2rem;
   }
 
-  .contenido-header .fondo {
+  .fondo {
     width: 100%;
   }
 
@@ -609,11 +611,11 @@ input[type="submit"] {
     width: 100%;
   }
 
-  .contenido-header .texto {
+  .texto {
     font-size: 1.5rem;
   }
 
-  .contenido-header .fondo {
+  .fondo {
     width: 100%;
   }
 
@@ -629,7 +631,7 @@ input[type="submit"] {
   .detalle {
     width: 70% !important;
     height: 100% !important;
-  } 
+  }
 }
 
 @media (min-width: 767px) {
@@ -650,11 +652,11 @@ input[type="submit"] {
     width: 100%;
   }
 
-  .contenido-header .texto {
+  .texto {
     font-size: 2rem;
   }
 
-  .contenido-header .fondo {
+  .fondo {
     width: 100%;
   }
 
@@ -700,11 +702,11 @@ input[type="submit"] {
     width: 100%;
   }
 
-  .contenido-header .texto {
-    font-size: 2.5rem;
+  .texto {
+    font-size: 5rem;
   }
 
-  .contenido-header .fondo {
+  .fondo {
     width: 100%;
   }
 
@@ -715,18 +717,4 @@ input[type="submit"] {
   .contacto a {
     font-size: 0.9rem;
   }
-}
-
-.buttonA {
-  margin-bottom: 1.5rem;
-  padding: 2px 50px;
-  color: white;
-  background-color: black;
-  border-collapse: collapse;
-}
-
-.buttonB {
-  margin-bottom: 1rem;
-  padding: 2px 50px;
-  border-collapse: collapse;
 }

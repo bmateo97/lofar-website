@@ -12,13 +12,8 @@ import Contenido from "@/components/Contenido";
 import { DiscussionEmbed } from "disqus-react";
 
 const Productos = () => {
-  const { imagenes, addCart } = useContext(Context);
-  const [gender, setGender] = useState("todo");
-  const list = ["pulseras-b", "anillos-b", "cadenas"];
-
-  const onChangeGender = (ev) => {
-    setGender(ev.target.name);
-  };
+  const { imagenes, addCart, onEditPrecio, precio, genero, onEditGenero } =
+  useContext(Context);
 
   return (
     <>
@@ -37,70 +32,66 @@ const Productos = () => {
               <span>Lo que ofrecemos</span>
             </h2>
             <p class="titulo">Nuestros Productos</p>
+            <div className="d-flex p-3 justify-content-around">
+              <label>Precio: {precio} </label>
+              <input
+                type="range"
+                min="0"
+                max="100"
+                step="1"
+                onChange={onEditPrecio}
+                value={precio}
+              />
+              <label>Genero: </label>
+              <label htmlFor="t">
+                Todo:{" "}
+                <input
+                  type="radio"
+                  name="genero"
+                  id="t"
+                  onChange={onEditGenero}
+                  value="todo"
+                />
+              </label>
+              <label htmlFor="h">
+                Hombre:{" "}
+                <input
+                  type="radio"
+                  name="genero"
+                  id="h"
+                  onChange={onEditGenero}
+                  value="hombre"
+                />
+              </label>
+              <label htmlFor="m">
+                Mujer:{" "}
+                <input
+                  type="radio"
+                  name="genero"
+                  id="m"
+                  onChange={onEditGenero}
+                  value="mujer"
+                />
+              </label>
+            </div>
           </article>
-
-          <div className="container text-center">
-            <button
-              className={gender == "todo" ? "buttonA" : "buttonB"}
-              name="todo"
-              onClick={onChangeGender}
-            >
-              Todo
-            </button>
-            <button
-              className={gender == "hombre" ? "buttonA" : "buttonB"}
-              name="hombre"
-              onClick={onChangeGender}
-            >
-              Hombre
-            </button>
-            <button
-              className={gender == "mujer" ? "buttonA" : "buttonB"}
-              name="mujer"
-              onClick={onChangeGender}
-            >
-              Mujer
-            </button>
-          </div>
 
           <div class="_galeria">
             {imagenes.map((img) => {
-              if (gender == "todo") {
-                return (
-                  <Picture
-                    key={img.id}
-                    image={img}
-                    title="Lofar Joyas"
-                    addCart={addCart}
-                  />
-                );
-              } else {
-                if (gender == "hombre") {
-                  if (list.includes(img.categoria)) {
-                    return (
-                      <Picture
-                        key={img.id}
-                        image={img}
-                        title="Lofar Joyas"
-                        addCart={addCart}
-                      />
-                    );
-                  }
+              if (img.precio > precio) return;
+              if (genero != "todo") {
+                if (img.genero != genero) {
+                  return
                 }
-
-                if (gender == "mujer") {
-                  if (!list.includes(img.categoria)) {
-                    return (
-                      <Picture
-                        key={img.id}
-                        image={img}
-                        title="Lofar Joyas"
-                        addCart={addCart}
-                      />
-                    );
-                  }
-                }
-              }
+              };
+              return (
+                <Picture
+                  key={img.id}
+                  image={img}
+                  title="Lofar Joyas"
+                  addCart={addCart}
+                />
+              );
             })}
           </div>
         </div>

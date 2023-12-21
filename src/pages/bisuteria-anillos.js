@@ -11,7 +11,8 @@ import Contenido from "@/components/Contenido";
 import { DiscussionEmbed } from "disqus-react";
 
 const Bisuteria_anillos = () => {
-  const { imagenes, addCart } = useContext(Context);
+  const { imagenes, addCart, onEditPrecio, precio, genero, onEditGenero } =
+  useContext(Context);
 
   return (
     <>
@@ -28,11 +29,59 @@ const Bisuteria_anillos = () => {
               <span>Lo que ofrecemos</span>
             </h2>
             <p class="titulo"> Anillos en Bisuteria</p>
+            <div className="d-flex p-3 justify-content-around">
+              <label>Precio: {precio} </label>
+              <input
+                type="range"
+                min="0"
+                max="100"
+                step="1"
+                onChange={onEditPrecio}
+                value={precio}
+              />
+              <label>Genero: </label>
+              <label htmlFor="t">
+                Todo:{" "}
+                <input
+                  type="radio"
+                  name="genero"
+                  id="t"
+                  onChange={onEditGenero}
+                  value="todo"
+                />
+              </label>
+              <label htmlFor="h">
+                Hombre:{" "}
+                <input
+                  type="radio"
+                  name="genero"
+                  id="h"
+                  onChange={onEditGenero}
+                  value="hombre"
+                />
+              </label>
+              <label htmlFor="m">
+                Mujer:{" "}
+                <input
+                  type="radio"
+                  name="genero"
+                  id="m"
+                  onChange={onEditGenero}
+                  value="mujer"
+                />
+              </label>
+            </div>
           </article>
 
           <div class="_galeria">
             {imagenes.map((img) => {
               if (img.categoria !== "anillos-b") return;
+              if (img.precio > precio) return;
+              if (genero != "todo") {
+                if (img.genero != genero) {
+                  return
+                }
+              };
               return (
                 <Picture
                   key={img.id}

@@ -3,11 +3,12 @@ import { useRouter } from "next/router";
 import { useContext, useState } from "react";
 import Context from "@/Utils/context";
 import Link from "next/link";
+import Header from "@/components/Header";
 
 export default function Page() {
   const router = useRouter();
-  const [banner, setBanner] = useState('');
-  const { usuario, setUsuario } = useContext(Context);
+  const [banner, setBanner] = useState("");
+  const { setUsuario } = useContext(Context);
   const [nombreUsuario, setNombreUsuario] = useState("");
   const [clave, setClave] = useState("");
 
@@ -18,16 +19,21 @@ export default function Page() {
   };
 
   const onSubmit = async (ev) => {
-    const reponse = await fetch("https://lofar-api-uskfbty6la-ue.a.run.app/ingresar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        usuario: nombreUsuario,
-        contrasena: clave,
-      }),
-    });
+    if (nombreUsuario == "") return;
+    if (clave == "" ) return;
+    const reponse = await fetch(
+      "https://lofar-api-uskfbty6la-ue.a.run.app/ingresar",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          usuario: nombreUsuario,
+          contrasena: clave,
+        }),
+      }
+    );
 
     if (reponse.ok) {
       const data = await reponse.json();
@@ -36,8 +42,8 @@ export default function Page() {
         sessionStorage.setItem("user", JSON.stringify(data[0][0]));
         router.push("/");
       } else {
-        setBanner('Usuario no encontrado')
-        setTimeout(() => setBanner(''), 3000);
+        setBanner("Usuario no encontrado");
+        setTimeout(() => setBanner(""), 3000);
       }
     }
   };
@@ -50,40 +56,38 @@ export default function Page() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="contenido-header contenido-header2">
-        <div className="fondo" id="fondo">
-          <div className="p-3" id="login">
-            <h3 className="text-center">Ingresar</h3>
-            <input
-              type="text"
-              name="usuario"
-              placeholder="Usuario"
-              onChange={onChangeInput}
-            />
-            <input
-              type="password"
-              name="clave"
-              placeholder="Contraseña"
-              onChange={onChangeInput}
-            />
-            <div className="text-center">
-              <button className="btn btn-outline-dark" onClick={onSubmit}>
-                Ingresar
-              </button>
-            </div>
-            {
-              banner != "" && 
-              <div className="my-2 alert alert-warning">
-                {banner}
-              </div>
-            }
-            <div className="text-center mt-1">
-              <p className=""><Link href="/registrarme">Crear Cuenta</Link></p>
-            </div>
-            
+      <Header />
+      <div className="fondo" id="fondo">
+        <img className="contenido-header contenido-header2" src="/bg-girl.jpeg" />
+        <div className="p-3" id="login">
+          <h3 className="text-center">Ingresar</h3>
+          <input
+            type="text"
+            name="usuario"
+            placeholder="Usuario"
+            onChange={onChangeInput}
+          />
+          <input
+            type="password"
+            name="clave"
+            placeholder="Contraseña"
+            onChange={onChangeInput}
+          />
+          <div className="text-center">
+            <button className="btn btn-outline-dark" onClick={onSubmit}>
+              Ingresar
+            </button>
           </div>
-          <h1 className="texto">Fabrica de Joyas Lofar</h1>
+          {banner != "" && (
+            <div className="my-2 alert alert-warning">{banner}</div>
+          )}
+          <div className="text-center mt-1">
+            <p className="">
+              <Link href="/registrarme">Crear Cuenta</Link>
+            </p>
+          </div>
         </div>
+        <h1 className="texto2">Fabrica de Joyas Lofar</h1>
       </div>
     </>
   );
