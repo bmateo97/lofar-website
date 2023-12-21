@@ -383,7 +383,7 @@ p {
     font-size: 10px;
   }
 
-  .contenido-header .texto {
+  .texto {
     font-size: 60px;
   }
 
@@ -426,6 +426,13 @@ p {
 
 #desplegable div ul div {
   width: 50%;
+  height: 30%;
+}
+
+#desplegable img {
+  width: 30%;
+  height: 40vh;
+  padding: 10px;
 }
 
 
@@ -502,7 +509,7 @@ input[type="submit"] {
   border-collapse: collapse;
 }
 
-@media (min-width: 319px) {
+@media (min-width: 300px) {
   .menu {
     flex-wrap: wrap;
   }
@@ -522,6 +529,10 @@ input[type="submit"] {
   }
 
   .texto {
+    font-size: 1.2rem;
+  }
+
+  .texto2 {
     font-size: 1.2rem;
   }
 
@@ -615,6 +626,11 @@ input[type="submit"] {
     font-size: 1.5rem;
   }
 
+  .texto2 {
+    font-size: 1.5rem;
+  }
+
+
   .fondo {
     width: 100%;
   }
@@ -655,6 +671,11 @@ input[type="submit"] {
   .texto {
     font-size: 2rem;
   }
+
+  .texto2 {
+    font-size: 2rem;
+  }
+
 
   .fondo {
     width: 100%;
@@ -705,6 +726,11 @@ input[type="submit"] {
   .texto {
     font-size: 5rem;
   }
+
+  .texto2 {
+    font-size: 5rem;
+  }
+
 
   .fondo {
     width: 100%;

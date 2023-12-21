@@ -35,8 +35,8 @@ const Header = () => {
               src={
                 imagenes[Math.floor(Math.random() * (imagenes.length - 1))]?.blob
               }
-              height="200"
-              width="400"
+              height="500"
+              width="500"
               alt="Imagen Destacada"
             />
           </ul>
@@ -55,8 +55,8 @@ const Header = () => {
               src={
                 imagenes[Math.floor(Math.random() * (imagenes.length - 1))]?.blob
               }
-              height="300"
-              width="300"
+              height="500"
+              width="500"
               alt="Imagen Destacada"
             />
           </ul>
