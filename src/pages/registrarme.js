@@ -23,6 +23,7 @@ export default function Page() {
   };
 
   const onSubmit = async (ev) => {
+    if (nombres == "" || apellidos == "" || email == "" || telefono == "" || clave == "") return;
     const response = await fetch("https://lofar-api-uskfbty6la-ue.a.run.app/registrarse", {
       method: "POST",
       headers: {
