@@ -118,6 +118,7 @@ const Subir = () => {
           <option value="juegos">Juegos de plata</option>
           <option value="anillos-b">Anillos bisuteria</option>
           <option value="pulseras-b">Pulseras bisuteria</option>
+          <option value="promociones">Promociones</option>
         </select>
        </label>
        <label>

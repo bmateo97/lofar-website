@@ -30,6 +30,7 @@ const Header = () => {
               <Link href="/aretes">Aretes </Link>
               <Link href="/cadenas">Cadenas </Link>
               <Link href="/juegos">Juegos de Plata</Link>
+              <Link href="/promociones">Promociones</Link>
             </div>
             <Image
               src={
