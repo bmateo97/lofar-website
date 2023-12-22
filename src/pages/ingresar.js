@@ -22,7 +22,7 @@ export default function Page() {
     if (nombreUsuario == "") return;
     if (clave == "" ) return;
     const reponse = await fetch(
-      "https://lofar-api-uskfbty6la-ue.a.run.app/ingresar",
+      "https://lofar-api-2b3zz3222q-ue.a.run.app/ingresar",
       {
         method: "POST",
         headers: {

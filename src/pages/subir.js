@@ -58,7 +58,7 @@ const Subir = () => {
     }
 
     const response = await fetch(
-      "https://lofar-api-uskfbty6la-ue.a.run.app/insertar",
+      "https://lofar-api-2b3zz3222q-ue.a.run.app/insertar",
       {
         method: "POST",
         headers: {

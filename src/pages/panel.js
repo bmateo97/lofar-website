@@ -25,7 +25,7 @@ const Subir = () => {
       return;
     };
     const response = await fetch(
-      "https://lofar-api-uskfbty6la-ue.a.run.app/panel",
+      "https://lofar-api-2b3zz3222q-ue.a.run.app/panel",
       {
         method: "POST",
         headers: {

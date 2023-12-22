@@ -20,7 +20,7 @@ const ModalB = () => {
 
   const onEditDesc = async () => {
     const response = await fetch(
-      "https://lofar-api-uskfbty6la-ue.a.run.app/descripcion",
+      "https://lofar-api-2b3zz3222q-ue.a.run.app/descripcion",
       {
         method: "POST",
         headers: {

@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }) {
   const [genero, setGenero] = useState("todo");
 
   const getAllImages = async () => {
-    const response = await fetch("https://lofar-api-uskfbty6la-ue.a.run.app/images");
+    const response = await fetch("https://lofar-api-2b3zz3222q-ue.a.run.app/images");
     if (response.ok) {
       const imgs = await response.json();
       setImagenes(imgs[0]);
@@ -23,7 +23,7 @@ export default function App({ Component, pageProps }) {
   };
 
   const getPanel = async () => {
-    const response = await fetch("https://lofar-api-uskfbty6la-ue.a.run.app/getpanel");
+    const response = await fetch("https://lofar-api-2b3zz3222q-ue.a.run.app/getpanel");
     if (response.ok) {
       const panel = await response.json();
       setPanel(panel[0][0]);
@@ -66,8 +66,9 @@ export default function App({ Component, pageProps }) {
     setCarrito([...carrito]);
   };
 
+  // eliminar imagen
   const deleteItem = async (image) => {
-    const response = await fetch('https://lofar-api-uskfbty6la-ue.a.run.app/eliminar', {
+    const response = await fetch('https://lofar-api-2b3zz3222q-ue.a.run.app/eliminar', {
       method: 'DELETE',
       headers: {
         'Content-type': 'application/json',
@@ -83,7 +84,7 @@ export default function App({ Component, pageProps }) {
   }
 
   const editStock = async (id, value) => {
-    const response = await fetch('https://lofar-api-uskfbty6la-ue.a.run.app/actualizar', {
+    const response = await fetch('https://lofar-api-2b3zz3222q-ue.a.run.app/actualizar', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
