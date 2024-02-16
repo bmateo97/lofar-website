@@ -22,16 +22,16 @@ const Carrito = () => {
       <Header />
       <Contenido />
 
-      <main class="container">
-        <div class="row productos">
-          <article class="col-12 text-center">
-            <h2 class="subtitulo">
+      <main className="container">
+        <div className="row productos">
+          <article className="col-12 text-center">
+            <h2 className="subtitulo">
               <span>Carrito</span>
             </h2>
-            <p class="titulo">Productos</p>
+            <p className="titulo">Productos</p>
           </article>
 
-          <div class="_galeria">
+          <div className="_galeria">
             {carrito.map((img) => {
               return (
                 <Item
@@ -73,15 +73,15 @@ const Carrito = () => {
         </div>
       </main>
 
-      <div class="container-fluid px-b galeria">
-        <div class="row justify-content-center mx-0 px-0">
-          <div class="col-4 px-0 mx-0">
+      <div className="container-fluid px-b galeria">
+        <div className="row justify-content-center mx-0 px-0">
+          <div className="col-4 px-0 mx-0">
             <img src="/display/img-01.jpeg" alt="" />
           </div>
-          <div class="col-4 px-0 mx-0">
+          <div className="col-4 px-0 mx-0">
             <img src="/display/img-02.jpg" alt="" />
           </div>
-          <div class="col-4 px-0 mx-0">
+          <div className="col-4 px-0 mx-0">
             <img src="/display/img-03.jpg" alt="" />
           </div>
         </div>

@@ -32,19 +32,19 @@ const Comprar = () => {
 
       <Header />
       <Contenido />
-      <main class="container text-center mb-5">
+      <main className="container text-center mb-5">
         <h3>Felicidades por su compra !</h3>
       </main>
 
-      <div class="container-fluid px-b galeria">
-        <div class="row justify-content-center mx-0 px-0">
-          <div class="col-4 px-0 mx-0">
+      <div className="container-fluid px-b galeria">
+        <div className="row justify-content-center mx-0 px-0">
+          <div className="col-4 px-0 mx-0">
             <img src="/display/img-01.jpeg" alt="" />
           </div>
-          <div class="col-4 px-0 mx-0">
+          <div className="col-4 px-0 mx-0">
             <img src="/display/img-02.jpg" alt="" />
           </div>
-          <div class="col-4 px-0 mx-0">
+          <div className="col-4 px-0 mx-0">
             <img src="/display/img-03.jpg" alt="" />
           </div>
         </div>

@@ -22,13 +22,13 @@ const Anillos = () => {
       <Header />
       <Contenido />
       <Modal />
-      <main class="container">
-        <div class="row productos">
-          <article class="col-12 text-center">
-            <h2 class="subtitulo">
+      <main className="container">
+        <div className="row productos">
+          <article className="col-12 text-center">
+            <h2 className="subtitulo">
               <span>Lo que ofrecemos</span>
             </h2>
-            <p class="titulo">Anillos</p>
+            <p className="titulo">Anillos</p>
             <p>Filtros</p>
 
             <div className="d-flex p-3 justify-content-around">
@@ -75,7 +75,7 @@ const Anillos = () => {
             </div>
           </article>
 
-          <div class="_galeria">
+          <div className="_galeria">
             {imagenes.map((img) => {
               if (img.categoria !== "anillos") return;
               if (img.precio > precio) return;
@@ -97,15 +97,15 @@ const Anillos = () => {
         </div>
       </main>
 
-      <div class="container-fluid px-b galeria">
-        <div class="row justify-content-center mx-0 px-0">
-          <div class="col-4 px-0 mx-0">
+      <div className="container-fluid px-b galeria">
+        <div className="row justify-content-center mx-0 px-0">
+          <div className="col-4 px-0 mx-0">
             <img src="/display/img-01.jpeg" alt="" />
           </div>
-          <div class="col-4 px-0 mx-0">
+          <div className="col-4 px-0 mx-0">
             <img src="/display/img-02.jpg" alt="" />
           </div>
-          <div class="col-4 px-0 mx-0">
+          <div className="col-4 px-0 mx-0">
             <img src="/display/img-03.jpg" alt="" />
           </div>
         </div>

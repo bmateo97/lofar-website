@@ -15,13 +15,13 @@ const contacto = () => {
       <Header />
       <Contenido />
 
-      <div class="container-fluid">
-        <section class="contacto row justify-content-center">
-          <div class="col-12 col-md-9 text-center">
-            <h2 class="subtitulo">
+      <div className="container-fluid">
+        <section className="contacto row justify-content-center">
+          <div className="col-12 col-md-9 text-center">
+            <h2 className="subtitulo">
               <span>Contactanos</span>
             </h2>
-            <h2 class="subtitulo">
+            <h2 className="subtitulo">
               <span>Email: joyas_lofar@hotmail.com</span>
             </h2>
           </div>
@@ -35,9 +35,9 @@ const contacto = () => {
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
-          <div class="w-100 mb-4"></div>
+          <div className="w-100 mb-4"></div>
           <div>
-            <p class="border-bottom border-top">
+            <p className="border-bottom border-top">
               <img src="/icons/icon-cellphone.png" alt="" />
               <a href="tel:+593984255256"> 098 425 5256 </a>,
               <a href="tel:+593998891208"> 099 889 1208 </a>
@@ -45,7 +45,7 @@ const contacto = () => {
           </div>
         </section>
         <section>
-          <div class="recuadro">
+          <div className="recuadro">
             <h1>
               <img src="/icons/correo-de-contacto.png" /> Contactanos
             </h1>

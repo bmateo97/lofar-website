@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useContext, useState } from "react";
 import Context from "@/Utils/context";
+import Header from "@/components/Header";
 
 export default function Page() {
   const router = useRouter();
@@ -60,8 +61,9 @@ export default function Page() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="contenido-header contenido-header2">
-        <div className="fondo" id="fondo">
+      <Header />
+      <div className="fondo2" id="fondo">
+          <img className="contenido-header3" src="/bg-girl.jpeg" />
           <div className="p-3" id="login">
             <input
               type="text"
@@ -101,10 +103,10 @@ export default function Page() {
             {banner != "" && (
               <div className="my-2 alert alert-info">{banner}</div>
             )}
+            <div className="m-5"></div>
           </div>
-          <h1 className="texto">Fabrica de Joyas Lofar</h1>
+          <h1 className="mt-5 texto">Fabrica de Joyas Lofar</h1>
         </div>
-      </div>
     </>
   );
 }

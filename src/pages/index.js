@@ -54,50 +54,50 @@ export default function Home() {
             </p>
           </article>
           <div className="container d-flex mt-5">
-            <article class="_galeria--item mx-3">
-              <figure class="producto">
-                <img src="/products/Anillos/Anillo1.jpg" class="" alt="" />
-                <figcaption class="overlay">
-                  <p class="overlay-texto">Anillo hechos en plata </p>
+            <article className="_galeria--item mx-3">
+              <figure className="producto">
+                <img src="/products/Anillos/Anillo1.jpg" className="" alt="" />
+                <figcaption className="overlay">
+                  <p className="overlay-texto">Anillo hechos en plata </p>
                 </figcaption>
               </figure>
             </article>
 
-            <article class="_galeria--item mx-3">
-              <figure class="producto">
+            <article className="_galeria--item mx-3">
+              <figure className="producto">
                 <img
                   src="/products/Aretes/Arete1.jpg"
-                  class="img-fluid"
+                  className="img-fluid"
                   alt=""
                 />
-                <figcaption class="overlay">
-                  <p class="overlay-texto">Aretes hechos en plata </p>
+                <figcaption className="overlay">
+                  <p className="overlay-texto">Aretes hechos en plata </p>
                 </figcaption>
               </figure>
             </article>
 
-            <article class="_galeria--item mx-3">
-              <figure class="producto">
+            <article className="_galeria--item mx-3">
+              <figure className="producto">
                 <img
                   src="/products/Cadenas/Cadena.jpg"
-                  class="img-fluid"
+                  className="img-fluid"
                   alt=""
                 />
-                <figcaption class="overlay">
-                  <p class="overlay-texto">Cadena hecho en plata </p>
+                <figcaption className="overlay">
+                  <p className="overlay-texto">Cadena hecho en plata </p>
                 </figcaption>
               </figure>
             </article>
 
-            <article class="_galeria--item mx-3">
-              <figure class="producto">
+            <article className="_galeria--item mx-3">
+              <figure className="producto">
                 <img
                   src="/products/Juegos/imagen 25.jpg"
-                  class="img-fluid"
+                  className="img-fluid"
                   alt=""
                 />
-                <figcaption class="overlay">
-                  <p class="overlay-texto">Juego hechos en filigrana </p>
+                <figcaption className="overlay">
+                  <p className="overlay-texto">Juego hechos en filigrana </p>
                 </figcaption>
               </figure>
             </article>

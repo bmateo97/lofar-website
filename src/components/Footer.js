@@ -2,8 +2,8 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer class="containter row justify-content-center redes-sociales">
-      <div class="col-auto">
+    <footer className="containter row justify-content-center redes-sociales">
+      <div className="col-auto">
         <a href="https://www.facebook.com/JoyasLofar">
           <img src="/icons/facebook.png" alt="" />
         </a>

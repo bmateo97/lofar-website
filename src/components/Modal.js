@@ -24,9 +24,9 @@ const Modal = () => {
                 <p className="text-center">
                   {select.descripcion}
                 </p>
-                <article key={select.id} class="_galeria--item">
-                  <figure class="producto">
-                    <img src={select.blob} class="" alt="" />
+                <article key={select.id} className="_galeria--item">
+                  <figure className="producto">
+                    <img src={select.blob} className="" alt="" />
                   </figure>
                 </article>
               </div>

@@ -4,11 +4,11 @@ import Context from "@/Utils/context";
 const Item = ({ image, addCart }) => {
   const { onAddItem, onDeleteItem } = useContext(Context);
   return (
-    <article key={image.id} class="_galeria--item">
-      <figure class="producto">
-        <img src={image.blob} class="" alt="" />
+    <article key={image.id} className="_galeria--item">
+      <figure className="producto">
+        <img src={image.blob} className="" alt="" />
 
-        <figcaption class="overlay">
+        <figcaption className="overlay">
           <button className="btn btn-info mb-2" onClick={() => addCart(image)}>
             Quitar
           </button>

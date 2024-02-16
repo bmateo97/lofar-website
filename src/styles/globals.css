@@ -52,7 +52,17 @@ p {
   align-items: center;
   max-width: 100%;
   position: relative;
-  background-image: url(/bg-top.png);
+}
+
+.fondo2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenido-header3 {
+  width: 100vw;
 }
 
 #login {
@@ -537,7 +547,7 @@ input[type="submit"] {
   }
 
   .fondo {
-    width: 100%;
+    width: 100%
   }
 
   ._galeria {
