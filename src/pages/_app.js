@@ -13,6 +13,7 @@ export default function App({ Component, pageProps }) {
   const [select, setSelect] = useState({});
   const [precio, setPrecio] = useState(100);
   const [genero, setGenero] = useState("todo");
+  const [ usuarios, setUsuarios ] = useState([]);
 
   const getAllImages = async () => {
     const response = await fetch("https://lofar-api-2b3zz3222q-ue.a.run.app/images");
@@ -29,6 +30,13 @@ export default function App({ Component, pageProps }) {
       setPanel(panel[0][0]);
     }
   };
+
+  const fetchUsuarios = async () => {
+    const res = await fetch("https://lofar-api-2b3zz3222q-ue.a.run.app/usuarios");
+    const data = await res.json();
+    console.log(data);
+    setUsuarios(data);
+  }
 
   const addCart = (imagen) => {
     const _image = carrito.filter((img) => img.id == imagen.id);
@@ -116,6 +124,7 @@ export default function App({ Component, pageProps }) {
   useEffect(() => {
     getAllImages();
     getPanel();
+    fetchUsuarios();
   }, []);
 
   return (
@@ -143,6 +152,7 @@ export default function App({ Component, pageProps }) {
         onEditPrecio,
         genero,
         onEditGenero,
+        usuarios,
       }}
     >
       <Component {...pageProps} />

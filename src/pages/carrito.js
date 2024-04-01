@@ -29,14 +29,15 @@ const Carrito = () => {
               <span>Carrito</span>
             </h2>
             <p className="titulo">Productos</p>
+            <p className="total">Total: $ {carrito.reduce((prev, current) => { return (current.precio * current.cantidad) + prev }, 0)}</p>
           </article>
 
           <div className="_galeria">
-            {carrito.map((img) => {
+            {carrito.map((item) => {
               return (
                 <Item
-                  key={img.id}
-                  image={img}
+                  key={item.id}
+                  image={item}
                   title="Here your title"
                   addCart={deleteCarrito}
                 />
@@ -47,10 +48,11 @@ const Carrito = () => {
         <div className="container text-center">
           <button
             className="btn btn-info mb-5 px-5"
-            onClick={() => {
+            onClick={async () => {
+              console.log('comprar')
               if (!usuario) return router.push("/ingresar");
-              carrito.map((img) => {
-                fetch(
+              const row = carrito.map(async (img) => {
+                 return  fetch(
                   "https://lofar-api-2b3zz3222q-ue.a.run.app/actualizar",
                   {
                     method: "POST",
@@ -64,6 +66,21 @@ const Carrito = () => {
                   }
                 );
               });
+              console.log(carrito.map((item) => item.id).join(','))
+              const res1 = await fetch('https://lofar-api-2b3zz3222q-ue.a.run.app/comprar', {
+                method: 'POST',
+                headers: {
+                  'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                  id: usuario.id,
+                  cantidad: carrito.map((item) => item.id).join(',')
+                })
+              });
+              const res2 = await fetch(`https://lofar-api-2b3zz3222q-ue.a.run.app/email/${usuario.email}`);
+              const res = await Promise.all(row);
+              console.log(res, res1, res2)
+              // console.log(res);
               setCarrito([]);
               router.push("/comprar");
             }}
