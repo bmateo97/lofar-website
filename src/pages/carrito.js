@@ -49,8 +49,8 @@ const Carrito = () => {
           <button
             className="btn btn-info mb-5 px-5"
             onClick={async () => {
-              console.log('comprar')
               if (!usuario) return router.push("/ingresar");
+              if (carrito.length === 0) return alert("No hay productos en el carrito");
               const row = carrito.map(async (img) => {
                  return  fetch(
                   "https://lofar-api-2b3zz3222q-ue.a.run.app/actualizar",
