@@ -77,7 +77,17 @@ const Carrito = () => {
                   cantidad: carrito.map((item) => item.id).join(',')
                 })
               });
-              const res2 = await fetch(`https://lofar-api-2b3zz3222q-ue.a.run.app/email/${usuario.email}`);
+              const res2 = await fetch(`https://lofar-api-2b3zz3222q-ue.a.run.app/email/${usuario.email}`, {
+                method: 'POST',
+                headers: {
+                  'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                  nombre: usuario.nombre,
+                  productos: carrito.map((item) => item.id).join(','),
+                  total: carrito.reduce((prev, current) => { return (current.precio * current.cantidad) + prev }, 0)
+                })
+              });
               const res = await Promise.all(row);
               console.log(res, res1, res2)
               // console.log(res);
