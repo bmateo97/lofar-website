@@ -84,7 +84,7 @@ const Carrito = () => {
                 },
                 body: JSON.stringify({
                   nombre: usuario.nombre,
-                  productos: carrito.map((item) => item.id).join(','),
+                  productos: carrito,
                   total: carrito.reduce((prev, current) => { return (current.precio * current.cantidad) + prev }, 0)
                 })
               });
