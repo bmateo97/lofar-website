@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Head from "next/head";
 import Header from "@/components/Header";
 import Modal from "@/components/Modal";
@@ -12,8 +12,12 @@ import Contenido from "@/components/Contenido";
 import { DiscussionEmbed } from "disqus-react";
 
 const Productos = () => {
-  const { imagenes, addCart, onEditPrecio, precio, genero, onEditGenero } =
+  const { imagenes, addCart, onEditPrecio, precio, genero, onEditGenero, getAllImages } =
   useContext(Context);
+
+  useEffect(() => {
+    getAllImages();
+  }, []);
 
   return (
     <>

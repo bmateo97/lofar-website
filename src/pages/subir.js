@@ -8,7 +8,6 @@ import FileBase64 from "react-file-base64";
 import Context from "@/Utils/context";
 import Contenido from "@/components/Contenido";
 import { useRouter } from "next/router";
-import { DiscussionEmbed } from "disqus-react";
 
 const Subir = () => {
   const router = useRouter();
@@ -19,7 +18,7 @@ const Subir = () => {
   const [precio, setprecio] = useState(0);
   const [blob, setBlob] = useState("");
   const [message, setMessage] = useState("");
-  const { setUsuario, getAllImages } = useContext(Context);
+  const { setUsuario, getAllImages, imagenes, setImagenes } = useContext(Context);
 
   const handlerExistencias = (e) => setExistencias(e.target.value);
   const handlerPrecio = (e) => setprecio(e.target.value);
@@ -40,6 +39,7 @@ const Subir = () => {
   };
 
   const onSubmit = async () => {
+    console.log("uploading...");
     if (categoria == "") {
       setMessage("Seleccione una categoría");
       setTimeout(() => setMessage(""), 3000);
@@ -64,23 +64,31 @@ const Subir = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ categoria, blob, existencias, descripcion, precio, genero }),
+        body: JSON.stringify({
+          categoria,
+          blob,
+          existencias,
+          descripcion,
+          precio,
+          genero,
+          codigo: `lofar${(imagenes.length + 1).toString().padStart(3, "0")}`,
+        }),
       }
     );
 
     if (response.ok) {
-      await response.json();
-      getAllImages();
       setMessage("Foto subida exitosamente !");
       setTimeout(() => setMessage(""), 3000);
     } else {
       if (response.status == 413) {
         setMessage("Imagen excede el tamaño permitido");
         setTimeout(() => setMessage(""), 3000);
+        setTimeout(() => router.push("/productos"), 3000);
       }
       setMessage("Error al subir");
       setTimeout(() => setMessage(""), 3000);
     }
+
   };
 
   useEffect(() => {
@@ -102,39 +110,38 @@ const Subir = () => {
       <Contenido />
 
       <div className="container pb-5">
-       <label>
-        Categoria: <br />
-        <select
-          className="p-1 mr-2"
-          onChange={handleCategoria}
-          value={categoria}
-          title="Seleccione una categoria"
-        >
-          <option value="">Seleccione una categoria</option>
-          <option value="anillos">Anillos</option>
-          <option value="aretes">Aretes</option>
-          <option value="cadenas">Cadenas</option>
-          <option value="pulseras">Pulseras</option>
-          <option value="juegos">Juegos de plata</option>
-          <option value="anillos-b">Anillos bisuteria</option>
-          <option value="pulseras-b">Pulseras bisuteria</option>
-          <option value="promociones">Promociones</option>
-        </select>
-       </label>
-       <label>
-        Genero: <br />
-        <select
-          className="p-1 mr-2"
-          onChange={handleGenero}
-          value={genero}
-          title="Seleccione una categoria"
-        >
-          <option value="">Seleccione una Genero</option>
-          <option value="hombre">Hombre</option>
-          <option value="mujer">Mujer</option>
-          
-        </select>
-       </label>
+        <label>
+          Categoria: <br />
+          <select
+            className="p-1 mr-2"
+            onChange={handleCategoria}
+            value={categoria}
+            title="Seleccione una categoria"
+          >
+            <option value="">Seleccione una categoria</option>
+            <option value="anillos">Anillos</option>
+            <option value="aretes">Aretes</option>
+            <option value="cadenas">Cadenas</option>
+            <option value="pulseras">Pulseras</option>
+            <option value="juegos">Juegos de plata</option>
+            <option value="anillos-b">Anillos bisuteria</option>
+            <option value="pulseras-b">Pulseras bisuteria</option>
+            <option value="promociones">Promociones</option>
+          </select>
+        </label>
+        <label>
+          Genero: <br />
+          <select
+            className="p-1 mr-2"
+            onChange={handleGenero}
+            value={genero}
+            title="Seleccione una categoria"
+          >
+            <option value="">Seleccione una Genero</option>
+            <option value="hombre">Hombre</option>
+            <option value="mujer">Mujer</option>
+          </select>
+        </label>
         <div className="mt-2">
           <label>
             Existencias: <br />
@@ -163,16 +170,16 @@ const Subir = () => {
         </div>
         <label className="mt-2">
           Imagen: <br />
-        <FileBase64 multiple={false} onDone={handleImagen} />
+          <FileBase64 multiple={false} onDone={handleImagen} />
         </label>
         <label className="mt-2">
-        Descripción: <br />
-        <textarea
-          className=""
-          placeholder="Descripción (500)"
-          maxLength="500"
-          onChange={handlerDescripcion}
-        ></textarea>
+          Descripción: <br />
+          <textarea
+            className=""
+            placeholder="Descripción (500)"
+            maxLength="500"
+            onChange={handlerDescripcion}
+          ></textarea>
         </label>
         <button className="btn btn-info px-5" type="button" onClick={onSubmit}>
           Subir

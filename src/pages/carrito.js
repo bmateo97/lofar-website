@@ -66,7 +66,6 @@ const Carrito = () => {
                   }
                 );
               });
-              console.log(carrito.map((item) => item.id).join(','))
               const res1 = await fetch('https://lofar-api-2b3zz3222q-ue.a.run.app/comprar', {
                 method: 'POST',
                 headers: {
