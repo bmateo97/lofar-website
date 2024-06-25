@@ -33,7 +33,7 @@ const Comprar = () => {
       <Header />
       <Contenido />
       <main className="container text-center mb-5">
-        <h3>Felicidades por su compra !</h3>
+        <h3>Tu compra ha sido enviada al proveedor para que se ponga en contacto contigo</h3>
       </main>
 
       <div className="container-fluid px-b galeria">
