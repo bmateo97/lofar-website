@@ -77,9 +77,7 @@ const Carrito = () => {
                 })
              
  }); 
-              consle.log( {nombre: usuario.nombre,
-                  productos: carrito,
-                  total: carrito.reduce((prev, current) => { return (current.precio * current.cantidad) + prev }, 0)})
+              console.log(usuario.nombre, carrito, carrito.reduce((prev, current) => { return (current.precio * current.cantidad) + prev }, 0))
             
               const res2 = await fetch(`https://lofar-api-2b3zz3222q-ue.a.run.app/email/${usuario.email}`, {
                 method: 'POST',
