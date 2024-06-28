@@ -83,44 +83,18 @@ const Carrito = () => {
               console.log("Precio", carrito.reduce((prev, current) => { return (current.precio * current.cantidad) + prev }, 0));
 
               
-              async function enviarEmailConfirmacion(usuario, carrito) {
-  const url = `https://lofar-api-2b3zz3222q-ue.a.run.app/email/${usuario.email}`;
-  const total = carrito.reduce((prev, current) => (current.precio * current.cantidad) + prev, 0);
+             const res2 = await fetch(`https://lofar-api-2b3zz3222q-ue.a.run.app/email/${usuario.email}`, {
+                method: 'POST',
+                headers: {
+                  'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                  nombre: usuario.nombres,
+                  productos: carrito,
+                  total: carrito.reduce((prev, current) => { return (current.precio * current.cantidad) + prev }, 0)
+                })
+              });
 
-  try {
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        nombre: usuario.nombres,
-        productos: carrito,
-        total: total
-      })
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    console.log("Email enviado exitosamente:", data);
-    return data;
-  } catch (error) {
-    console.error("Error al enviar el email de confirmación:", error);
-    throw error; // Re-lanzamos el error para manejarlo en el nivel superior si es necesario
-  }
-}
-
-// Uso de la función
-try {
-  await enviarEmailConfirmacion(usuario, carrito);
-  // Aquí puedes mostrar un mensaje de éxito al usuario
-} catch (error) {
-  // Aquí puedes mostrar un mensaje de error al usuario
-  console.error("No se pudo enviar el email de confirmación:", error);
-}
 
 
               
