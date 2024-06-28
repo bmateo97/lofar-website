@@ -81,7 +81,8 @@ const Carrito = () => {
               console.log("Obj usuario", usuario, typeof(usuario))
               console.log("Array carrito", carrito);
               console.log("Precio", carrito.reduce((prev, current) => { return (current.precio * current.cantidad) + prev }, 0));
-            ///
+
+              
               async function enviarEmailConfirmacion(usuario, carrito) {
   const url = `https://lofar-api-2b3zz3222q-ue.a.run.app/email/${usuario.email}`;
   const total = carrito.reduce((prev, current) => (current.precio * current.cantidad) + prev, 0);
@@ -120,7 +121,9 @@ try {
   // Aquí puedes mostrar un mensaje de error al usuario
   console.error("No se pudo enviar el email de confirmación:", error);
 }
-              ///////////////////
+
+
+              
               const res = await Promise.all(row);
               console.log(res, res1, res2)
               // console.log(res);
