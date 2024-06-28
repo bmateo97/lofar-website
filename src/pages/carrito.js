@@ -78,6 +78,7 @@ const Carrito = () => {
              
  }); 
               console.log("Nombre usuario",usuario.nombre);
+              console.log("Obj usuario", usuario)
               console.log("Array carrito", carrito);
               console.log("Precio", carrito.reduce((prev, current) => { return (current.precio * current.cantidad) + prev }, 0));
             
