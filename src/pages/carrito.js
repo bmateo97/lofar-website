@@ -88,7 +88,7 @@ const Carrito = () => {
                   'Content-type': 'application/json',
                 },
                 body: JSON.stringify({
-                  nombre: usuario.nombre,
+                  nombre: usuario.nombres,
                   productos: carrito,
                   total: carrito.reduce((prev, current) => { return (current.precio * current.cantidad) + prev }, 0)
                 })
