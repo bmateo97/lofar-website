@@ -64,7 +64,7 @@ export default function Page() {
           <input
             type="text"
             name="usuario"
-            placeholder="Usuario"
+            placeholder="Email"
             onChange={onChangeInput}
           />
           <input
