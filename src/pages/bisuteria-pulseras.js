@@ -126,3 +126,4 @@ const Pulseras = () => {
 };
 
 export default Pulseras;
+
