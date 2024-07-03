@@ -126,3 +126,4 @@ const Aretes = () => {
 };
 
 export default Aretes;
+
