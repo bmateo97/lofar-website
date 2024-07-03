@@ -140,7 +140,7 @@ p {
   font-size: 20px; /* cambie de auto a 20*/
   background-color: var(--black);
   margin: 0 7px; /*cambie de 10 a 7*/
-  transition: 0.5s ease all;
+  transition: 0.3s ease all;/* cambie de .5 a .3*/
   color: var(--gray-light);
   text-decoration: none;
 }
