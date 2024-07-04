@@ -65,34 +65,37 @@ export default function Page() {
       <div className="fondo2" id="fondo">
           <img className="contenido-header3" src="/foto.jpg" />
           <div className="p-3" id="login">
+  <h1> 
+    
+    </h1>
             <input
               type="text"
               name="nombres"
-              placeholder="Nombres"
+              placeholder="* Nombres"
               onChange={onChangeInput}
             />
             <input
               type="text"
               name="apellidos"
-              placeholder="Apellidos"
+              placeholder="* Apellidos"
               onChange={onChangeInput}
             />
             <input
               type="text"
               name="email"
-              placeholder="Email"
+              placeholder="* Email"
               onChange={onChangeInput}
             />
             <input
               type="text"
               name="telefono"
-              placeholder="Teléfono"
+              placeholder="* Teléfono"
               onChange={onChangeInput}
             />
             <input
               type="password"
               name="clave"
-              placeholder="Contraseña"
+              placeholder="* Contraseña"
               onChange={onChangeInput}
             />
             <div className="text-center">
