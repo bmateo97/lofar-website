@@ -34,3 +34,4 @@ const Item = ({ image, addCart }) => {
 };
 
 export default Item;
+
