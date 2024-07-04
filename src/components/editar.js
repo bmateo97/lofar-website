@@ -48,3 +48,4 @@ const Editar = ({ image }) => {
 };
 
 export default Editar;
+
