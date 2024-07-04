@@ -84,3 +84,4 @@ const Picture = ({ image, title, addCart }) => {
 };
 
 export default Picture;
+
