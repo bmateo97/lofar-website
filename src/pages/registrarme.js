@@ -66,16 +66,15 @@ export default function Page() {
           <img src="/foto.jpg" />
           <div className="p-3" id="login">
  <hr></hr>
+     <hr></hr>
+    <hr></hr>
+      <hr></hr>
      <div>Ingrese todos los campos</div>
          <div >
     por favor.
 </div>
-    <hr></hr>
-    <hr></hr>
-      <hr></hr>
-    <hr></hr>
-     <hr></hr>
-    <hr></hr>
+   
+   
             <input
               type="text"
               name="nombres"
