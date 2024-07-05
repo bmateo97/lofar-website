@@ -63,19 +63,11 @@ export default function Page() {
       </Head>
       <Header />
       <div className="fondo2" id="fondo">
-          <img src="/bg-girl.jpeg" />
+          <img className="contenido-header3" />
           <div className="p-3" id="login">
- <hr></hr>
-     <hr></hr>
-    <hr></hr>
-      <hr></hr>
-      <hr></hr>
-      <hr></hr>
-    <div>Ingrese todos los campos</div>
-         <div >
-    por favor.
 </div>
-  
+    <div>Ingrese todos los campos por favor.</div>
+    
             <input
               type="text"
               name="nombres"
@@ -117,7 +109,7 @@ export default function Page() {
             <div className="m-5"></div>
           </div>
           <h1 className="mt-5 texto"></h1>
-        </div>
+        
     </>
   );
 }
