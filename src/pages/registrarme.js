@@ -69,6 +69,8 @@ export default function Page() {
      <hr></hr>
     <hr></hr>
       <hr></hr>
+      <hr></hr>
+      <hr></hr>
      <div>Ingrese todos los campos</div>
          <div >
     por favor.
