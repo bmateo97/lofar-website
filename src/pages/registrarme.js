@@ -68,6 +68,10 @@ export default function Page() {
  <hr></hr>
     <hr></hr>
     <hr></hr>
+      <hr></hr>
+    <hr></hr>
+     <hr></hr>
+    <hr>Relle</hr>
             <input
               type="text"
               name="nombres"
@@ -108,7 +112,7 @@ export default function Page() {
             )}
             <div className="m-5"></div>
           </div>
-          <h1 className="mt-5 texto">Fabrica de Joyas Lofar</h1>
+          <h1 className="mt-5 texto"></h1>
         </div>
     </>
   );
