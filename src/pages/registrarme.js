@@ -63,7 +63,7 @@ export default function Page() {
       </Head>
       <Header />
       <div className="fondo2" id="fondo">
-          <img src="/foto.jpg" />
+          <img src="/bg-girl.jpeg" />
           <div className="p-3" id="login">
  <hr></hr>
      <hr></hr>
