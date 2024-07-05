@@ -9,35 +9,45 @@ export default function Page() {
   const router = useRouter();
   const [banner, setBanner] = useState("");
   const { setUsuario } = useContext(Context);
-  const [nombreUsuario, setNombreUsuario] = useState("");
-  const [clave, setClave] = useState("");
+  const [inputs, setInputs] = useState({
+    usuario: "",
+    clave: ""
+  });
 
   const onChangeInput = (ev) => {
     const { name, value } = ev.target;
-    if (name == "usuario") setNombreUsuario(value);
-    if (name == "clave") setClave(value);
+    setInputs((prev) => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
   const onSubmit = async (ev) => {
-    if (nombreUsuario == "") return;
-    if (clave == "" ) return;
-    const reponse = await fetch(
-      "https://lofar-api-2b3zz3222q-ue.a.run.app/ingresar",
-      {
+    ev.preventDefault(); // Previene el comportamiento por defecto del botón
+
+    const { usuario, clave } = inputs;
+
+    if (!usuario || !clave) {
+      setBanner("Por favor, complete todos los campos.");
+      setTimeout(() => setBanner(""), 3000);
+      return;
+    }
+
+    try {
+      const response = await fetch("https://lofar-api-2b3zz3222q-ue.a.run.app/ingresar", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          usuario: nombreUsuario,
+          usuario,
           contrasena: clave,
         }),
-      }
-    );
+      });
 
-    if (reponse.ok) {
-      const data = await reponse.json();
-      if (data[0].length > 0) {
+      const data = await response.json();
+
+      if (response.ok && data[0].length > 0) {
         setUsuario(data[0][0]);
         sessionStorage.setItem("user", JSON.stringify(data[0][0]));
         router.push("/");
@@ -45,6 +55,9 @@ export default function Page() {
         setBanner("Usuario no encontrado");
         setTimeout(() => setBanner(""), 3000);
       }
+    } catch (error) {
+      setBanner("Error en la conexión. Por favor, intente nuevamente.");
+      setTimeout(() => setBanner(""), 3000);
     }
   };
 
@@ -65,12 +78,14 @@ export default function Page() {
             type="text"
             name="usuario"
             placeholder="Email"
+            value={inputs.usuario}
             onChange={onChangeInput}
           />
           <input
             type="password"
             name="clave"
             placeholder="Contraseña"
+            value={inputs.clave}
             onChange={onChangeInput}
           />
           <div className="text-center">
@@ -78,7 +93,7 @@ export default function Page() {
               Ingresar
             </button>
           </div>
-          {banner != "" && (
+          {banner && (
             <div className="my-2 alert alert-warning">{banner}</div>
           )}
           <div className="text-center mt-1">
@@ -92,3 +107,4 @@ export default function Page() {
     </>
   );
 }
+
