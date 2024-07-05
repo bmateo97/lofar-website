@@ -71,7 +71,7 @@ export default function Page() {
       <hr></hr>
     <hr></hr>
      <hr></hr>
-    <hr>Relle</hr>
+    <hr></hr>
             <input
               type="text"
               name="nombres"
