@@ -66,7 +66,12 @@ export default function Page() {
           <img className="contenido-header3" />
           <div className="p-3" id="login">
 </div>
-    <div>Ingrese todos los campos por favor.</div>
+
+
+<div className="container-fluid">
+<div className="recuadro">
+<div className="text-center">
+<div center>Ingrese todos los campos por favor. </div>
     
             <input
               type="text"
@@ -100,7 +105,7 @@ export default function Page() {
             />
             <div className="text-center">
               <button className="btn btn-outline-dark" onClick={onSubmit}>
-                Ingresar
+                 Registrar e ingresar
               </button>
             </div>
             {banner != "" && (
@@ -109,7 +114,9 @@ export default function Page() {
             <div className="m-5"></div>
           </div>
           <h1 className="mt-5 texto"></h1>
-        
+        </div>
+          </div>
+          </div>
     </>
   );
 }
