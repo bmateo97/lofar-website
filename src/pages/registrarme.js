@@ -31,8 +31,8 @@ export default function Page() {
 
     if (!nombres || !apellidos || !email || !telefono || !clave) {
       
-      setBanner("Por favor, complete todos los campos.");
-    setTimeout(() => setBanner(""), 3000);
+      setBanner("Por favor, complete todos los campos obligatorios.");
+    setTimeout(() => setBanner(""), 5000);
     return;
   }
 
