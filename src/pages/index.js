@@ -35,9 +35,6 @@ export default function Home() {
             <p>Calidad 100% Garantizada.</p>
             <p>Joyeros desde 1970.</p>
             <p>Chordeleg, Azuay, Ecuador</p>
-            <a href="joyas_lofar@hotmail.com" className="enlace">
-              Descubre tu próximo diseño
-            </a>
           </div>
         </div>
 
@@ -57,9 +54,6 @@ export default function Home() {
             <article className="_galeria--item mx-3">
               <figure className="producto">
                 <img src="/products/Anillos/Anillo1.jpg" className="" alt="" />
-                <figcaption className="overlay">
-                  <p className="overlay-texto">Anillo hechos en plata </p>
-                </figcaption>
               </figure>
             </article>
 
@@ -70,9 +64,7 @@ export default function Home() {
                   className="img-fluid"
                   alt=""
                 />
-                <figcaption className="overlay">
-                  <p className="overlay-texto">Aretes hechos en plata </p>
-                </figcaption>
+               
               </figure>
             </article>
 
@@ -83,9 +75,7 @@ export default function Home() {
                   className="img-fluid"
                   alt=""
                 />
-                <figcaption className="overlay">
-                  <p className="overlay-texto">Cadena hecho en plata </p>
-                </figcaption>
+                
               </figure>
             </article>
 
@@ -96,9 +86,7 @@ export default function Home() {
                   className="img-fluid"
                   alt=""
                 />
-                <figcaption className="overlay">
-                  <p className="overlay-texto">Juego hechos en filigrana </p>
-                </figcaption>
+               
               </figure>
             </article>
           </div>
