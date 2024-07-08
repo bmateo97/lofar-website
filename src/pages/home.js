@@ -33,9 +33,9 @@ export default function Home() {
             <p>Calidad 100% Garantizada.</p>
             <p>Joyeros desde 1970.</p>
             <p>Chordeleg, Azuay, Ecuador</p>
-            <Link href="/productos" button className="btn-productos">
+           <a href="joyas_lofar@hotmail.com" className="enlace">
               Descubre tu próximo diseño
-            </link>
+            </a>
           </div>
         </div>
 
